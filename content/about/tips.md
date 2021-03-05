@@ -35,3 +35,7 @@ For more on this process, see [the github workflow](../assignments/howto_do.html
 ## Better homework grades 
 
 I wrote a section of tips in the [homework guidelines](../assignments/howto_do.html#tips-for-better-grades-workproduct-repos). Many of these tips apply to any coding project you work on (Github or not).
+
+## Look at your data and objects frequently! (Print them)
+
+As discussed [here](../01/07_debugging.html#seriously-print-your-data-and-objects-often) 

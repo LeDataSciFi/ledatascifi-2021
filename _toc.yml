@@ -36,6 +36,7 @@
   - file: content/assignments/howto_do
     title: "How to start and turn in assignments"
   - file: content/assignments/howto_review 
+    title: "How to do your peer reviews"
 
 #  - file: content/assignments/particip_header
 #    sections:
@@ -65,5 +66,61 @@
       title: "Python Basics"    
     - file: "content/01/07_debugging"
       title: "Debugging"    
+    - file: "content/01/07a_errors"
     - file: "content/01/08_libraries"
-
+    - file: "content/01/09_gitignore"
+      title: "Gitignore Files"    
+    
+  - file: "content/02/10_Golden_1"
+    title: "Good Analysis Practices"
+    sections:
+    - file: "content/02/10_Golden_2"
+      title: "A case study of bad research"
+    - file: "content/02/10_Golden_3"
+      title: "The golden rules"
+    - file: "content/02/10_Golden_4"
+      title: "Good data"
+    - file: "content/02/10_Golden_5"
+      title: "When to write functions"
+    - file: "content/02/10_Golden_6"
+      title: "Reorganizing the bad research folder"
+    - file: "content/02/10_Golden_7"
+      title: "Filepaths"
+    
+  - file: "content/03/00_Data_Wrangling_Intro"
+    title: "Wrangling with Data"
+    sections:
+    - file: "content/03/01_Numpy"
+      title: "Numpy"
+      sections:
+        - file: "content/03/01a_NumpyCS"
+          title: "Numpy + Scientific Computing"
+        - file: "content/03/01b_NumpyBasics"
+          title: "A (Very) Short Introduction"
+        - file: "content/03/01c_NumpyPractice"
+          title: "Exercises"
+        - file: "content/03/01d_NumpyResources"
+          title: "More Resources"
+    - file: "content/03/02a_pandasIntro"
+      title: "Pandas"
+      sections:
+        - file: "content/03/02a_pandasTips"
+          title: "Tips"      
+        - file: "content/03/02b_pandasVocab"
+          title: "Vocab and Long vs Wide Data"      
+        - file: "content/03/02c_commonFcns"
+          title: "Common Functions"      
+        - file: "content/03/02d_temp"
+          title: "Temp. vs Perm. Objects"      
+        - file: "content/03/02e_eda_golden"
+          title: "Golden Rules + EDA"      
+        - file: "content/03/02f_chains"
+          title: "Pandas Chains" 
+        - file: "content/03/02g_commontasks"
+          title: "Common Tasks" 
+        - file: "content/03/02h_exercises"
+          title: "Exercises" 
+        - file: "content/03/02j_resourcesAndSum"
+          title: "Summary and Resources" 
+      
+      

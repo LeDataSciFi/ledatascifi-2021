@@ -2,6 +2,9 @@
 /content/under construction/*
 /assignment_data/creating/inputs/*
 _build/
+/answer_keys/*
+*fixfix.ipynb
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

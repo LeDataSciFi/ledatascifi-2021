@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>L3_python slides</title>
+<title>L6_pandas slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13203,50 +13203,37 @@ a.anchor-link {
 
 <div class="reveal">
 <div class="slides">
-<aside class="notes">
-
+<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For classes with mostly new coders, the python section alone will take &gt;75 minutes.</p>
-
-</div>
-</div>
-</div>
-</aside><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Hello-everyone!-Before-class:">Hello everyone! Before class:<a class="anchor-link" href="#Hello-everyone!-Before-class:">&#182;</a></h2><ol>
-<li>In GH Desktop: Fetch/pull your class notes repo and the lecture repo.</li>
-<li>Copy the textbook file <code>/content/01/06_python.ipynb</code> to your <code>class notes/notes</code> folder</li>
-<li>In JLab: In the class notes repo, inside the "notes" subfolder, start a new file to save our notes from today</li>
-<li>Suggested: Snap those 2 files side-by-side in the JLab window</li>
-</ol>
-<p>Hopefully this goes better than Chrissy Teigen's experience with Py:</p>
-<p><img src="https://media.giphy.com/media/zlXkHKnCXAe9a/giphy.gif" alt=""></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="First-things-first">First things first<a class="anchor-link" href="#First-things-first">&#182;</a></h2><p>The assignment will be posted ASAP.</p>
-<p>If you didn't receive a notification from GH tonight from my post on the classmates discussion board, please let me or the TA know immediately.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Outline">Outline<a class="anchor-link" href="#Outline">&#182;</a></h2><ol>
-<li>Python essentials: Learning by doing<ul>
-<li>Q: Feedback: Did anyone try and like any of the tutorial options?</li>
+<h1 id="Hello!-Today:">Hello! Today:<a class="anchor-link" href="#Hello!-Today:">&#182;</a></h1><ol>
+<li>Before class: <ul>
+<li>Fetch your class notes repo and the lecture repo</li>
+<li>Copy pandas exercises from lectures (<code>content/03/02h_exercises.ipynb</code>) to your notes folder</li>
+<li>Open in JLab: exercises, a ipynb for taking notes, and a ipynb inside <code>class notes/codebook</code> to save a "recipe" today</li>
 </ul>
 </li>
-<li>Debugging </li>
+<li>Getting dirty with <code>pandas</code></li>
+</ol>
+<h3 id="Notes:">Notes:<a class="anchor-link" href="#Notes:">&#182;</a></h3><ul>
+<li>Please fill out a short check in survey: <a href="https://forms.gle/3C56TPPJsWukKw318">https://forms.gle/3C56TPPJsWukKw318</a> </li>
+<li>Popular request: I'm going to record, but remember participation credits</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Peer-reviews">Peer reviews<a class="anchor-link" href="#Peer-reviews">&#182;</a></h2><ol>
+<li>Tweaked instructioons:<ul>
+<li>Go to <a href="github.com">github.com</a></li>
+<li>On the left side of the page, under repositories, you'll see that you have access to assignments for two peers</li>
+</ul>
+</li>
+<li>Review progress: 37/96 (great!)</li>
 </ol>
 
 </div>
@@ -13255,137 +13242,14 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Comments">Comments<a class="anchor-link" href="#Comments">&#182;</a></h2><p>Remember to use comments! In fact, over use them in the beginning.</p>
-<p>They help you, future you, and others understand what</p>
-<ul>
-<li>A particular line of code is doing</li>
-<li>What blocks of code are doing</li>
-<li>The idea behind why you wrote the code as you did (big picture)</li>
-</ul>
-<p>Else, you'll find yourself in this photo soon:</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="img/badcode2.jpg" alt=""></p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Guided-discussion-+-practice">Guided discussion + practice<a class="anchor-link" href="#Guided-discussion-+-practice">&#182;</a></h2><p>We will run parts of the textbook file in our open notes file.</p>
-<ol>
-<li>Arithmetic --&gt; 1 practice prob</li>
-<li>Logic/booleans <ul>
-<li>booleans, operators: comparison, logic, membership</li>
-<li>for now: don't use <code>is</code> or <code>is not</code>! (let's make a cell for "warnings")</li>
-<li>complex logic gates</li>
-</ul>
-</li>
-<li>Key lessons: Naming objects, <code>&lt;TAB&gt;</code> and <code>&lt;SHIFT&gt;+&lt;TAB&gt;</code>, pointers, Objects, </li>
-<li>Data structures: lists, tuple, dict, set (next slide), then practice</li>
-</ol>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Built-in-data-structures">Built in data structures<a class="anchor-link" href="#Built-in-data-structures">&#182;</a></h3><p>Listed from most commonly used to least:</p>
-<table>
-<thead><tr>
-<th>Type Name</th>
-<th>Example</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>list</td>
-<td>[1, 2, 3]</td>
-<td>Ordered collection</td>
-</tr>
-<tr>
-<td>dict</td>
-<td>{'a':1, 'b':2, 'c':3}</td>
-<td>Unordered (key,value) mapping</td>
-</tr>
-<tr>
-<td>set</td>
-<td>{1, 2, 3}</td>
-<td>Unordered collection of unique values</td>
-</tr>
-<tr>
-<td>tuple</td>
-<td>(1, 2, 3)</td>
-<td>Immutable ordered collection</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Lists:">Lists:<a class="anchor-link" href="#Lists:">&#182;</a></h3><ul>
-<li>Define with brackets: <code>L = [3, 1, 4, 15, 9]</code></li>
-</ul>
-
+<h2 id="&quot;And-now...&quot;">"And now..."<a class="anchor-link" href="#&quot;And-now...&quot;">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>"Zero indexed": <code>L[0]</code> returns 3,  <code>L[1]</code> returns 1</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Can access from the end: <code>L[-1]</code> returns 9,  <code>L[-2]</code> returns 15</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Lots of built in functions: len, sort, reversed, max, min, sum, count, append, extend,...<ul>
-<li>Prof demo: Show the py reference in Jlab, search for "data structures"</li>
-<li>Prof demo: Find this outside JLab</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Can access "slices": <code>L[&lt;start at index&gt; : &lt;go till index&gt;]</code><ul>
-<li><code>L[0:3]</code> and <code>L[:3]</code> return <code>[3,1,4]</code></li>
-<li><code>L[-3]</code> returns <code>[4,15,9]</code></li>
-</ul>
-</li>
-</ul>
+<h2 id="Pandas">Pandas<a class="anchor-link" href="#Pandas">&#182;</a></h2><p><img src="https://media.giphy.com/media/KyBX9ektgXWve/source.gif" alt=""></p>
 
 </div>
 </div>
@@ -13393,387 +13257,50 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, let's all define this vector: <code>L=[8, 5, 6, 3, 7]</code>.</p>
-<p><strong>TRY, PAIR, SHARE: Write code that does the following. Discuss with the person next to you as needed:</strong></p>
-<ol>
-<li>Returns the length.</li>
-<li>Returns the largest element.</li>
-<li>Returns the smallest element.</li>
-<li>Returns the total of the vector.</li>
-<li>Returns the first element. See <a href="https://stackoverflow.com/questions/509211/understanding-slice-notation?rq=1">this awesome answer</a> to learn about "slicing" lists in Python. If that link is dead: <a href="https://stackoverflow.com/questions/509211/understanding-slice-notation?rq=1">https://stackoverflow.com/questions/509211/understanding-slice-notation?rq=1</a> </li>
-<li>Returns the last element.</li>
-<li>Returns the first 2 elements.</li>
-<li>Returns the last 2 elements.</li>
-<li>Returns the odd numbered elements (i.e. [8,6,7].</li>
-</ol>
+<h2 id="Today:-Pandas">Today: Pandas<a class="anchor-link" href="#Today:-Pandas">&#182;</a></h2><p>From last class:</p>
+<blockquote><p>Exploring the incredible FRED dataset: <a href="https://fred.stlouisfed.org/">https://fred.stlouisfed.org/</a></p>
+<ul>
+<li>Unreal repository of data:<blockquote><p>Download, graph, and track <strong>786,000 US and international time series from 103 sources.</strong></p>
+</blockquote>
+</li>
+<li>Check out "at a glance" and "popular series"</li>
+<li>Usable in other classes: easy to download, clean, modify, analyze, plot all that in seconds of coding!</li>
+</ul>
+</blockquote>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Guided-discussion-+-practice">Guided discussion + practice<a class="anchor-link" href="#Guided-discussion-+-practice">&#182;</a></h2><p>We will run parts of the textbook file in our open notes file.</p>
-<ol>
-<li>Arithmetic --&gt; 1 practice prob</li>
-<li>Logic/booleans <ul>
-<li>booleans, operators: comparison, logic, membership</li>
-<li>for now: don't use <code>is</code> or <code>is not</code>! (let's make a cell for "warnings")</li>
-<li>complex logic gates</li>
+<p>Today we will cover:</p>
+<ul>
+<li>EDA (disc, and a simple recipe!)</li>
+<li>pseudo coding and dev'ing code</li>
+<li>pandas functions: assign, pivot_tables, ...</li>
+<li>"for-loops" --&gt; groupby</li>
+<li>chaining (3.2.6!) / lambda functions <div class="highlight"><pre><span></span><span class="p">(</span> <span class="c1"># anything between these parens</span>
+  <span class="c1"># is &quot;one&quot; line of code</span>
+  <span class="p">)</span>
+</pre></div>
+</li>
+</ul>
+<p>Now, let's practice the exercises in 3.2.8.</p>
+<ul>
+<li>Q0-Q3: breakout rooms, then call/response<ul>
+<li>An "EDA recipe"</li>
 </ul>
 </li>
-<li>Key lessons: Naming objects, <code>&lt;TAB&gt;</code> and <code>&lt;SHIFT&gt;+&lt;TAB&gt;</code>, pointers, Objects, </li>
-<li>Data structures --&gt; try, pair (3 people/room), share</li>
-<li><strong>Flow control syntax and thoughts: for loop (next slides), indentation, if-elif-else</strong></li>
-</ol>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stonks</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GME&#39;</span><span class="p">,</span><span class="s1">&#39;AMC&#39;</span><span class="p">,</span><span class="s1">&#39;BB&#39;</span><span class="p">,</span><span class="s1">&#39;Bankrupt!&#39;</span><span class="p">]</span>
-
-<span class="c1"># syntax: for &lt;element&gt; in &lt;iterable&gt;:        </span>
-<span class="c1"># you must include the colon. </span>
-<span class="c1"># everything in the for loop must be indented</span>
-<span class="c1"># name the element something that makes sense (not generic!)!</span>
-
-<span class="k">for</span> <span class="n">stonk</span> <span class="ow">in</span> <span class="n">stonks</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">stonk</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>    <span class="nb">print</span><span class="p">(</span><span class="n">stonk</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># two common for-loop devices: </span>
-<span class="c1"># 1. looping over a range</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
-    <span class="nb">print</span> <span class="n">i</span>
-    
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># incrementing some calculation</span>
-<span class="n">mynumbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
-<span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">mynumbers</span><span class="p">:</span>
-    <span class="n">tot</span> <span class="o">=</span> <span class="n">tot</span> <span class="o">+</span> <span class="n">num</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tot</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Doesn't that seem silly?</p>
-<p>Q1: Isn't there a quicker way to compute that?</p>
-<p>Q2: Then why is that a useful construct? (answer on next slide)</p>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">stonk</span> <span class="ow">in</span> <span class="n">stonks</span><span class="p">:</span>
-    <span class="n">price</span> <span class="o">=</span> <span class="n">get_price_of</span><span class="p">(</span><span class="n">stonk</span><span class="p">)</span> <span class="c1"># do some intermediate steps</span>
-    <span class="n">tot</span> <span class="o">=</span> <span class="n">tot</span> <span class="o">+</span> <span class="n">price</span>           <span class="c1"># then increment!</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="If,-elif,-else">If, elif, else<a class="anchor-link" href="#If,-elif,-else">&#182;</a></h3><p>Syntax:</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">&lt;</span><span class="n">condition</span> <span class="c1">#1&gt;:                         # you must use the colon!</span>
-     <span class="o">&lt;</span><span class="n">do</span> <span class="n">some</span> <span class="n">stuff</span> <span class="k">if</span> <span class="n">condition</span> <span class="ow">is</span> <span class="n">true</span><span class="o">&gt;</span>
-<span class="k">elif</span> <span class="o">&lt;</span><span class="n">condition</span> <span class="c1">#2&gt;:                       # as in &quot;Else-If&quot;</span>
-    <span class="o">&lt;</span><span class="k">if</span> <span class="n">condition</span> <span class="c1">#1 is false, and </span>
-    <span class="n">condition</span> <span class="c1">#2 is true, run this block&gt;</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="o">&lt;</span><span class="k">if</span> <span class="n">neither</span> <span class="c1">#1 or #2 are true, do this&gt;</span>
-</pre></div>
-<p>Comments:</p>
-<ul>
-<li>You can include zero or as many <code>elif</code> code blocks as you want</li>
-<li>You can omit the <code>else</code> block entirely</li>
-<li>Whatever is in <code>&lt;condition&gt;</code> must evaluate to True or False or 1 or 0</li>
-<li>See the <strong>"Logic and comparisons"</strong> section above on how Python evaluates conditions</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered celltag_popout"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="PYTHON-AND-INDENTATION">PYTHON AND INDENTATION<a class="anchor-link" href="#PYTHON-AND-INDENTATION">&#182;</a></h2><ul>
-<li>Python has strong opinions about indentations</li>
-<li>Indentations at the beginning of lines are not "up to you"</li>
-<li><strong>Indentations indicate a "block" of code that is run as a unit.</strong> (like the for loops above)</li>
-</ul>
-<p>Example on next slide, prof demo.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered celltag_popout">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>       <span class="c1"># this is false, obviously,</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">2</span>        <span class="c1"># so this never runs and </span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am not here.&#39;</span><span class="p">)</span> <span class="c1"># this doesn&#39;t print</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;starting new block&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>       <span class="c1"># this is false, obviously,</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">2</span>        <span class="c1"># so this never runs and </span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am here&#39;</span><span class="p">)</span> <span class="c1"># this does print</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Other-notes-in-the-textbook">Other notes in the textbook<a class="anchor-link" href="#Other-notes-in-the-textbook">&#182;</a></h3><ul>
-<li><code>while</code>: We probably won't use while in this class. </li>
-<li><code>functions</code>: Useful!</li>
-<li>A list of popular packages we will add to our code as the semester proceeds</li>
-</ul>
-<h3 id="TIPS:">TIPS:<a class="anchor-link" href="#TIPS:">&#182;</a></h3><ol>
-<li><p>For each package we use, note the most common and useful functions, and copy "cookbook" uses of the packages which you can paste into new programs.</p>
-<p>Example: How to open a CSV file</p>
-</li>
-<li><p><em>I do not personally, nor do many programmers, commit to memory many functions of many packages. We simply <strong>know what can be done</strong> and when needed, we search (tab completion/google/stack overflow) for the command/recipe for that function.</em></p>
-</li>
-</ol>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="BREAK!">BREAK!<a class="anchor-link" href="#BREAK!">&#182;</a></h1><p><img src="https://media.giphy.com/media/RiWZUGcZPEKdQgrQ96/source.gif" alt=""></p>
-<p>Now we move on to the second section of class... "debugging"</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Tips-for-fixing-and-avoiding-errors">Tips for fixing and avoiding errors<a class="anchor-link" href="#Tips-for-fixing-and-avoiding-errors">&#182;</a></h2><p>Computers are extremely powerful but incredibly stupid. We want to both</p>
-<ul>
-<li>Fix bugs when they happen</li>
-<li>Prevent them from happening!</li>
-</ul>
-<p>Bugs can be syntax or other errors that break the code.</p>
-<p>The worst bugs are the type that let your code keep "working". Just lurking there, ruining your work...</p>
-<p><img src="https://media.giphy.com/media/3ov9k9kmfD1b80NJ2o/source.gif" alt=""></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="To-fix-bugs,-you-need-to">To fix bugs, you need to<a class="anchor-link" href="#To-fix-bugs,-you-need-to">&#182;</a></h3><ol>
-<li>Realize that you have a bug </li>
-<li>Figure out where it is</li>
-<li>Make it repeatable (and you'll understand the bug)</li>
-<li>Fix it (duh) and test it (the existence of the bug should disabuse you of your coding invincibility!)</li>
-</ol>
-<p>1 and 2 are easy with syntax errors - python will tell you.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em><strong>Advice that could save (or cost) you thousands:</strong></em> Those steps are general, and work for other things besides code, like  plumbing and electrical work on your parent's house.</p>
-<ol>
-<li>Read the error codes! Then google them. Then ask your @classmates. <ul>
-<li>REMINDER: the 15 minute rule</li>
+<li>Q4 (+Q5?): <ul>
+<li>Demos: Natalie and Christian; Alina and Anders</li>
+<li>Build on this to show: chaining, assign, lambda, groupby</li>
 </ul>
 </li>
-<li><code>%debug</code> - <a href="https://jakevdp.github.io/PythonDataScienceHandbook/01.06-errors-and-debugging.html#Debugging:-When-Reading-Tracebacks-Is-Not-Enough">Covered in nice detail here</a>.</li>
-<li>Hunt the bug: Flipping switches / divide and conquer (next slide)</li>
-</ol>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://media.giphy.com/media/dbtDDSvWErdf2/giphy.gif" alt=""></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://media.giphy.com/media/Oe4V14aLzv7JC/giphy.gif" alt=""></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>After slaving over your computer and a piece of paper (you smartly planned out your code before you went in head first), you've found a clever solution to your problem. Your code is beautiful and elegant, like this:</p>
-<div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
-<span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
-<span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
-<span class="n">Error</span> <span class="c1"># somewhere in the code is an error. But in real programming you don’t know the error is here!</span>
-<span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
-<span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
-</pre></div>
-<p>Let's turn parts of your code off:</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>You can just comment out parts of the code</p>
-<div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
-<span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
-<span class="c1"># 2+2 # imagine this is a bunch of code</span>
-<span class="c1"># Error # somewhere in the code is an error. But in real programming you don’t know the error is here!</span>
-<span class="c1"># 2+2 # imagine this is a bunch of code</span>
-<span class="c1"># 2+2 # imagine this is a bunch of code</span>
-</pre></div>
-<p>Well, this would work, so you know the error is in the lines you hid.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="But-what-about-the-bugs-that-let-your-code-keep-&quot;working&quot;?">But what about the bugs that let your code keep "working"?<a class="anchor-link" href="#But-what-about-the-bugs-that-let-your-code-keep-&quot;working&quot;?">&#182;</a></h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>These are usually often due to either</p>
-<ul>
-<li>planning errors (you thought you could do A-&gt;B-&gt;C, but C is impossible after B)</li>
-<li><strong>Or because you did something that didn't do exactly what you thought</strong></li>
+<li>Q6+Q7<ul>
+<li>Reshaping+index (important to solving problems!)</li>
 </ul>
-<p>The latter happens a TON with big data projects, and we will talk about techniques to reduce such errors.</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>But I have <strong>ONE BIG, WEIRD TRICK</strong> and let me tell, you, BUGS HATE IT:</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Look-at-your-data-and-objects-OFTEN!-Print,-print,-print!">Look at your data and objects OFTEN! Print, print, print!<a class="anchor-link" href="#Look-at-your-data-and-objects-OFTEN!-Print,-print,-print!">&#182;</a></h1>
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Seriously...</p>
-<h1 id="Look-at-your-data-and-objects-OFTEN!-Print,-print,-print!">Look at your data and objects OFTEN! Print, print, print!<a class="anchor-link" href="#Look-at-your-data-and-objects-OFTEN!-Print,-print,-print!">&#182;</a></h1><p>This isn't even a "debugging" point per se.</p>
-<ul>
-<li>You know a 6 is a 6.</li>
-<li>In big datasets, it's easy to make rather large changes without knowing exactly what you have done, ... or not done ... , if you don't see into the object. </li>
-<li>Are you sure that object is exactly what you think it is, containing exactly what you think it does? Thus, the <code>print</code> statement and other ways of "glancing into" datasets are crucial. Even when you've all become pythonic pros, you should tend towards examining your objects "too much". </li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered celltag_popout"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Options to look at datasets:</p>
-<ol>
-<li>Print parts of it in Jupyter, along with many summary stats. </li>
-<li>Output to a csv file and open in Excel.</li>
-<li>Use the <code>spyder</code> program that came with Anaconda. </li>
-<li>There is a "variable" explorer extension for JLab that lets you click and see objects. </li>
-</ol>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Are-you-still-stuck?">Are you still stuck?<a class="anchor-link" href="#Are-you-still-stuck?">&#182;</a></h2><p>It'll happen! We will try to build some ambitious code this semester!</p>
-<p>So if you've tried the above, what can you do?</p>
-<ul>
-<li>Writing smart code will save us from getting into intractable problems. More on that next class. </li>
-<li>Again, see the resources tab of our website!</li>
-<li>Finally, the resources tab also suggests that clearing your head and <a href="https://media.giphy.com/media/h6cFYO8miNhok/giphy.gif">getting a mental break might be a good idea</a>.</li>
+</li>
 </ul>
 
 </div>
@@ -13782,29 +13309,33 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><ul>
-<li>We covered some basic python coding together today. Going forward, it's headfirst into the breach. (?)</li>
-<li>You can figure out syntax issues, but use the 15 minute rule</li>
-<li>Get exposure to possible functions and algorithms to solve different problems via the resources and youtube videos</li>
-<li>LOOK AT YOUR DATA AND OBJECTS A LOT!</li>
+<h3 id="Next-class">Next class<a class="anchor-link" href="#Next-class">&#182;</a></h3><p>We start graphing!</p>
+<h3 id="Student-demos">Student demos<a class="anchor-link" href="#Student-demos">&#182;</a></h3><ul>
+<li>Task: plot how median income has evolved over time for PA <ul>
+<li>Bonus: plot CA, PA, and MI on one graph (arguably easier than just one!)</li>
+<li>HINT: Use <code>import seaborn as sns</code> to make the plot</li>
+</ul>
+</li>
+<li>Morning: Zhongrui (@zhz221) and Chengming (@chw221)</li>
+<li>Afternoon: Blaise (@blaisemilanek) and Caitlin (@cak320)</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><p>We covered</p>
+<ul>
+<li>Planning/pseudo code</li>
+<li>EDA: some of the things to look for + a recipe</li>
+<li>Pandas: reshaping, creating vars, summarizing data</li>
+<li>Remember: In pandas "for-loops" = groupby (usually)</li>
+<li>Panda pros: chaining</li>
 </ul>
 <p><img src="https://media.giphy.com/media/H7x1H0veAJlo4/giphy.gif" alt=""></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Shutting-down">Shutting down<a class="anchor-link" href="#Shutting-down">&#182;</a></h2><p>And at the end of each class,</p>
-<ul>
-<li>Restart your kernal and rerun your code</li>
-<li>save all open code files, </li>
-<li>close JLab (and the terminal running it)</li>
-<li>commit and push your Class Notes repo</li>
-<li>open the GitHub.com version of the repo</li>
-</ul>
-
+<h4 id="Shut-down:-Restart-your-kernal-and-run-code,-save-all-open-files,-close-JLab,-commit-and-push-your-class-notes-repo.">Shut down: Restart your kernal and run code, save all open files, close JLab, commit and push your class notes repo.<a class="anchor-link" href="#Shut-down:-Restart-your-kernal-and-run-code,-save-all-open-files,-close-JLab,-commit-and-push-your-class-notes-repo.">&#182;</a></h4>
 </div>
 </div>
 </div></section></section>

@@ -75,7 +75,7 @@ Once you have solved the problem (either by yourself or with the help of an inst
 ## Resources - tutorials and data 
 
 ```{note}
-** Anything that is bolded/underlined below is also considered essential.**
+**Anything that is bolded/underlined below is also considered essential.**
 
 If you have any favorite resources you like, or found helpful, please let me know ()
 ```
@@ -85,7 +85,7 @@ If you have any favorite resources you like, or found helpful, please let me kno
 - [Cheat sheets to bookmark/print!](https://github.com/LeDataSciFi/ledatascifi-2021/tree/main/cheatsheets) **Better yet, download these to your Notes repo, and put them in the "Codebook" folder therein!**
     - Included in this folder: python basics, jupyter notebook, importing data, numpy, pandas, seaborn, and scikit-learn
 - [Coding best practices, and project management](https://web.stanford.edu/~gentzkow/research/CodeAndData.xhtml)
-- ** Anything that is bolded/underlined below is also considered essential.**
+- **Anything that is bolded/underlined below is also considered essential.**
 ```
 
 ```{dropdown} Python
