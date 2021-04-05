@@ -992,7 +992,27 @@ Name: lprice, dtype: float64
 \[
 \log(\text{price})= 8.2+ 1.53 *\log(\text{carat}) + 0.33* \text{Ideal} + 0.18* \log(\text{carat})\cdot \text{Ideal}
 \]</div>
-<p>How do you interpret <span class="math notranslate nohighlight">\(\beta_2=0.18\)</span>? I recommend revisiting that link above, but I’ll summarize as:</p>
+<p>There are two natural questions:</p>
+<ol class="simple">
+<li><p>What is the impact of X on y? (Specifically, <em>what is the total impact of diamond size on price?</em>)</p></li>
+<li><p>What is does the interaction term’s coefficient mean?</p></li>
+</ol>
+<p><strong>To find the answer to Q1, to figure out the relationship of X on y, take the derivative of X w.r.t. y:</strong></p>
+<ul class="simple">
+<li><p>Relationship of size on price: <span class="math notranslate nohighlight">\(1.53 + 0.18*Ideal\)</span>.</p>
+<ul>
+<li><p>A 1% increase in size is associate with a 1.53% higher price <strong>for non ideal diamonds</strong></p></li>
+<li><p>A 1% increase in size is associate with a 1.71% higher price <strong>for ideal diamonds</strong></p></li>
+</ul>
+</li>
+<li><p>Relationship of cut on price: <span class="math notranslate nohighlight">\(0.33 + 0.18*log(carat)\)</span>. The average</p>
+<ul>
+<li><p>For 1 carat diamonds (<span class="math notranslate nohighlight">\(log(1)=0\)</span>), ideal diamonds are 33% more expensive than non-ideal diamonds</p></li>
+<li><p>For 2 carat diamonds (<span class="math notranslate nohighlight">\(log(2)=0.693\)</span>), ideal diamonds are 45% more expensive than non-ideal diamonds</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Q2: How do you interpret <span class="math notranslate nohighlight">\(\beta_2=0.18\)</span>? I recommend revisiting that link above, but I’ll summarize as:</strong></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\beta_2 \neq 0\)</span> implies that the relationship between carat size and price is different for ideal and non-ideal diamonds.</p></li>
 <li><p>Graphically, the difference in the slope of those carat-price relationships for ideal/non-ideal diamonds is <span class="math notranslate nohighlight">\(\beta_2\)</span></p></li>
