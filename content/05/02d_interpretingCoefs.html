@@ -1012,18 +1012,23 @@ Name: lprice, dtype: float64
 </ul>
 </li>
 </ul>
-<p><strong>Q2: How do you interpret <span class="math notranslate nohighlight">\(\beta_2=0.18\)</span>? I recommend revisiting that link above, but I’ll summarize as:</strong></p>
+<p><strong>Q2: How do you interpret <span class="math notranslate nohighlight">\(\beta_2=0.18\)</span>? I recommend revisiting that link above too, but I’ll summarize as:</strong></p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_2 \neq 0\)</span> implies that the relationship between <strong>carat size</strong> and price is different for ideal and non-ideal diamonds.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\beta_2 \neq 0\)</span> implies that the relationship between carat size and price is different for ideal and non-ideal diamonds.</p></li>
+<li><p>Mathematically: <span class="math notranslate nohighlight">\(1\% \uparrow\)</span> in carat <span class="math notranslate nohighlight">\(\rightarrow\)</span> price increases by 1.53% for non-ideal but 1.71% for ideal</p></li>
 <li><p>Graphically, the difference in the slope of those carat-price relationships for ideal/non-ideal diamonds is <span class="math notranslate nohighlight">\(\beta_2\)</span></p></li>
-<li><p>Economically, you might say that the value of a larger ring is even more valuable for better cut diamonds</p></li>
+<li><p><em>Economically, you might say that the value of a larger ring is even more valuable for better cut diamonds</em></p></li>
 </ul>
-<p>You can also reverse the mentions of carats and cuts above and say that</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\beta_2 \neq 0\)</span> implies that the relationship between <strong>cut quality</strong> and price is different for diamonds of different sizes.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\beta_2 \neq 0\)</span> implies that the relationship between <strong>cut quality</strong> and price is different for small and large diamonds.</p></li>
+<li><p>Mathematically: 1 carat diamonds that are ideal are 33% more expensive than non-ideal diamonds, but 2 carat ideal diamonds are 45% more expensive than non-deal diamonds</p></li>
 <li><p>Graphically, the difference in the slope of those cut quality-price relationships for small/large diamonds is <span class="math notranslate nohighlight">\(\beta_2\)</span></p></li>
-<li><p>Economically, you might say that the value of a better cut is even more valuable forlarger diamonds</p></li>
+<li><p><em>Economically, you might say that the value of a better cut is even more valuable forlarger diamonds</em></p></li>
 </ul>
+</li>
+</ol>
 </div>
 <div class="section" id="if-other-controls-are-included">
 <h2><span class="section-number">5.2.4.5. </span>If other controls are included<a class="headerlink" href="#if-other-controls-are-included" title="Permalink to this headline">¶</a></h2>
