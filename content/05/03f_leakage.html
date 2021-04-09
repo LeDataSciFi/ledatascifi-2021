@@ -752,17 +752,7 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-cardinal-sin-of-ml-data-leakage">
-   5.3.6.1. The Cardinal Sin of ML: Data leakage
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-absolute-golden-rule-of-modeling-is">
-   5.3.6.2. The absolute golden rule of modeling is…
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-leakage-can-be-tricky">
-   5.3.6.3. Data Leakage can be tricky
+   5.3.6.1. The Cardinal Sin of ML: Data Leakage
   </a>
  </li>
 </ul>
@@ -922,7 +912,7 @@ Good thing Grandma wont know about this...
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y8OtzJtp-EM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <hr class="docutils" />
 <div class="section" id="the-cardinal-sin-of-ml-data-leakage">
-<h2><span class="section-number">5.3.6.1. </span>The Cardinal Sin of ML: Data leakage<a class="headerlink" href="#the-cardinal-sin-of-ml-data-leakage" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.3.6.1. </span>The Cardinal Sin of ML: Data Leakage<a class="headerlink" href="#the-cardinal-sin-of-ml-data-leakage" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://scikit-learn.org/stable/common_pitfalls.html#data-leakage">Data leakage</a></p>
 <blockquote>
 <div><p><strong>is when information that would not be available at prediction time is used when building the model.</strong> This results in overly optimistic performance estimates, for example from cross-validation, and thus poorer performance when the model is used on actually novel data, for example during production.</p>
@@ -933,21 +923,20 @@ Good thing Grandma wont know about this...
 <li><p>Never call fit on the test data</p></li>
 <li><p>Data cleaning and transformation steps applied to the training data should not be learned from the test data</p></li>
 </ol>
-<p><a class="reference internal" href="04a_SKLearn.html"><span class="doc std std-doc">The next section</span></a> will explain how exactly to do all of this.</p>
-</div>
-<div class="section" id="the-absolute-golden-rule-of-modeling-is">
-<h2><span class="section-number">5.3.6.2. </span>The absolute golden rule of modeling is…<a class="headerlink" href="#the-absolute-golden-rule-of-modeling-is" title="Permalink to this headline">¶</a></h2>
+<p>The example above falls prey to data leakage because the testing data is the training data, rather than following ]</p>
+<p><a class="reference internal" href="04a_SKLearn.html"><span class="doc std std-doc">The next section</span></a> will explain how exactly to avoid all of these problems <em>with code</em>, but for now, let’s just say that</p>
+<blockquote class="epigraph">
+<div><p>The absolute golden rule of modeling is…</p>
 <p><strong>YOUR MODEL CAN’T HAVE ACCESS TO ANY DATA THAT IT WOULDN’T HAVE IN PRACTICE WHEN IT MAKES THE PREDICTION.</strong></p>
+</div></blockquote>
 <p>I know I already said that, and repetition is usually bad writing, but it must be said again. And again.</p>
-</div>
-<div class="section" id="data-leakage-can-be-tricky">
-<h2><span class="section-number">5.3.6.3. </span>Data Leakage can be tricky<a class="headerlink" href="#data-leakage-can-be-tricky" title="Permalink to this headline">¶</a></h2>
-<p>Here are some more examples of data leakage:</p>
+<p>That said, knowing that data leakage is bad doesn’t mean it’s easy to avoid.</p>
+<p>Data leakage can sneak into your analysis in tricky ways. Here are some examples:</p>
 <ul class="simple">
 <li><p>The outcome variable is a predictor (implicitly or explicitly)</p></li>
 <li><p>Predictor variables that are in response to the result (after the fact) or the possibility (anticipatory)</p></li>
 <li><p>Predicting loan default, the data might include employee IDs for recent customer service contacts. But the most recent contact might be with trouble-loan specialists (because the firm anticipated possible default due to some other signal). Using that employee’s customer contacts to predict default would add no value - the lender already knew to assign that employee!</p></li>
-<li><p>The smell test - is it too good to be true? I’ve seen some asset pricing models with suspicious out-of-sample R2s. Predicting stock prices is hard! <em>The best OOS predictive R2 for individual stocks <a class="reference external" href="https://dachxiu.chicagobooth.edu/download/ML.pdf">in this paper</a> is 1.80% per month.</em></p></li>
+<li><p>The smell test: Is it too good to be true? I’ve seen some asset pricing models with suspicious out-of-sample R2s. Predicting stock prices is hard! <em>The best OOS predictive R2 for individual stocks <a class="reference external" href="https://dachxiu.chicagobooth.edu/download/ML.pdf">in this paper</a> is 1.80% per month.</em></p></li>
 </ul>
 </div>
 </div>
