@@ -751,9 +751,8 @@
 <ol>
 <li><p>All of your import functions</p></li>
 <li><p>Load data</p></li>
-<li><p>Split to test and train as <a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">in this page</span></a> or <a class="reference internal" href="03c1_OOS.html"><span class="doc std std-doc">this page, if preserving time series integrity is important</span></a>. This is the first arrow in the picture below.</p>
-  <img src="img/feature_5_fold_cv.jpg" alt="From DS100" style="width:300px;">  
-</li>
+<li><p>Split your data into 2 subsamples: a “test” and “train” portion as <a class="reference internal" href="03_ML.html"><span class="doc std std-doc">in this page</span></a> or <a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">this page</span></a> or <a class="reference internal" href="03c1_OOS.html"><span class="doc std std-doc">this page</span></a>. This is the first arrow in the picture below. We will do all of our work on the “train” sample.
+<img src="img/feature_5_fold_cv.jpg" alt="From DS100-1" style="width:300px"></p></li>
 <li><p>Before modelling, do EDA (<strong>on the training data only!</strong>)</p>
 <ul class="simple">
 <li><p>Sample basics: What is the unit of observation? What time spans are covered?</p></li>
@@ -764,7 +763,6 @@
 <ul>
 <li><p>For continuous variables - take note of whether the relationship seems linear or quadratic or polynomial</p></li>
 <li><p>For categorical variables - maybe try a box plot for the various levels?</p></li>
-<li><p>Take notes about what you find</p></li>
 </ul>
 </li>
 <li><p>Now decide how you’d clean the data (imputing missing values, scaling variables, encoding categorical variables). These lessons will go into the preprocessing portion of your pipeline below. The <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html">sklearn guide on preprocessing</a> is very informative!</p></li>

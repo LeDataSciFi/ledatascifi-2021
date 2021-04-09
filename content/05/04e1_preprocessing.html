@@ -806,13 +806,6 @@
  [ 8.  8.  1.]] 
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.5, 0. , 3. ],
-       [3. , 7. , 9. ],
-       [3. , 5. , 2. ],
-       [4. , 5. , 6. ],
-       [8. , 8. , 1. ]])
-</pre></div>
-</div>
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">imp.fit_transform(X)</span></code> is the combination of <code class="docutils literal notranslate"><span class="pre">imp.fit(X)</span></code> and <code class="docutils literal notranslate"><span class="pre">imp.transform(X)</span></code>.</p>
@@ -820,23 +813,28 @@
 </div>
 <div class="section" id="standardization">
 <h2><span class="section-number">5.4.5.2. </span>Standardization<a class="headerlink" href="#standardization" title="Permalink to this headline">¶</a></h2>
-<p>Effectively, this means that <strong>continuous</strong> variables should have a mean of 0 and a variance of one.</p>
+<p>Effectively, this means that <strong>continuous</strong> variables should have a mean of 0 and a variance of 1.</p>
 <p>The <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling"><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> documentation</a> on this is quite good.</p>
 <blockquote>
 <div><p>Standardization of datasets is a <strong>common requirement for many machine learning estimators</strong> implemented in scikit-learn; they might behave badly if the individual features do not more or less look like standard normally distributed data: Gaussian with zero mean and unit variance.</p>
 </div></blockquote>
 <p>Why does this matter? “If a feature has a variance that is orders of magnitude larger than others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.”</p>
 <p><strong>In other words: STANDARDIZATION WILL IMPROVE YOUR PREDICTIONS.</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> can scale variables in many ways. Some alternative transforms are faster and some transform non-normal distributions into proto-normal distributions (which can improve the efficacy of many models).</p>
+<p>Visit (you guessed it!) <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling">the documentation</a> for more.</p>
+<p>Here is a simple example using <code class="docutils literal notranslate"><span class="pre">preprocessing.StandardScaler</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a very simple example</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span> 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span>
                     <span class="p">[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
                     <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]])</span>
-<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span> 
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; X_scaled</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>         <span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">X_scaled</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Mean of each var:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">X_scaled</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -844,26 +842,7 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> X_scaled
- ---------------------------------------- 
- [[ 0.         -1.22474487  1.33630621]
- [ 1.22474487  0.         -0.26726124]
- [-1.22474487  1.22474487 -1.06904497]] 
-
- Mean of each var:
- ---------------------------------------- 
- [0. 0. 0.] 
-
- STD of each var:
- ---------------------------------------- 
- [1. 1. 1.] 
-</pre></div>
 </div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> can scale variables in many ways. Some alternative transforms are faster and some transform non-normal distributions into proto-normal distributions (which can improve the efficacy of many models).</p>
-<p>Visit (you guessed it!) <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling">the documentation</a> for more.</p>
 </div>
 </div>
 
