@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; LeDataSciFi-2021</title>
+    <title>5.4.5. Preprocessing &#8212; LeDataSciFi-2021</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -55,7 +55,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.4.5. Optimizing a Model" href="04f_optimizing_a_model.html" />
+    <link rel="next" title="5.4.6. Optimizing a Model" href="04f_optimizing_a_model.html" />
     <link rel="prev" title="5.4.4. Pipelines" href="04e_pipelines.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -172,7 +172,7 @@
   Textbook
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../01/00_Getting_Started.html">
    1. Motivation and Getting Started
@@ -483,11 +483,11 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="00_intro.html">
    5. Data Science for Finance
   </a>
-  <ul class="collapse-ul">
+  <ul class="current collapse-ul">
    <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="01_bigpicture.html">
      5.1. Modeling and Teamwork
@@ -590,11 +590,11 @@
     <i class="fas fa-chevron-down">
     </i>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 current active collapsible-parent">
     <a class="reference internal" href="04a_SKLearn.html">
      5.4. Scikit-Learn for ML
     </a>
-    <ul class="collapse-ul">
+    <ul class="current collapse-ul">
      <li class="toctree-l3">
       <a class="reference internal" href="04b_best_practices.html">
        5.4.1. Best Practice Pseudo Code
@@ -615,14 +615,19 @@
        5.4.4. Pipelines
       </a>
      </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       5.4.5. Preprocessing
+      </a>
+     </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04f_optimizing_a_model.html">
-       5.4.5. Optimizing a Model
+       5.4.6. Optimizing a Model
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04h_putting_together.html">
-       5.4.6. All at Once
+       5.4.7. All at Once
       </a>
      </li>
     </ul>
@@ -707,6 +712,28 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/LeDataSciFi/ledatascifi-2021/main?urlpath=lab/tree/content/05/04e1_preprocessing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/LeDataSciFi/ledatascifi-2021/blob/main/content/05/04e1_preprocessing.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -716,7 +743,17 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imputation-missing-values">
+   5.4.5.1. Imputation / Missing Values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standardization">
+   5.4.5.2. Standardization
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -728,7 +765,108 @@
         
               <div>
                 
-  
+  <div class="section" id="preprocessing">
+<h1><span class="section-number">5.4.5. </span>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h1>
+<p>I wanted to have a little bit on preprocessing on the website, but as always, the official docs are useful!</p>
+<div class="section" id="imputation-missing-values">
+<h2><span class="section-number">5.4.5.1. </span>Imputation / Missing Values<a class="headerlink" href="#imputation-missing-values" title="Permalink to this headline">¶</a></h2>
+<p><em>We talked <a class="reference internal" href="../03/05c_missingdata.html"><span class="doc std std-doc">about imputation a bit before</span></a> in the context of <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. <a class="reference external" href="https://github.com/matthewbrems/ODSC-missing-data-may-18/blob/master/Analysis%20with%20Missing%20Data.pdf">These slides</a> on missing data are quite good! <a class="reference external" href="https://www.geeksforgeeks.org/working-with-missing-data-in-pandas/">This article</a> has examples too.</em></p>
+<p>Before modeling, you have to decide how to deal with missing values. You can</p>
+<ol class="simple">
+<li><p>Drop observations with any missing values,</p></li>
+<li><p>Impute missing values (mean, median, mode, interpolation, deduction, mean-of-group, etc),</p></li>
+<li><p>Or model the missing values explicitly (e.g. in a regression, as an incremental intercept but with no impact on the slope).</p></li>
+</ol>
+<p>What’s the right choice? It depends. On the data, the domain, the question, and economic theory. My choices change from project to project. You might use a combination of these!</p>
+<p><strong>You should focus on the whys and hows of dealing with missing data rather than mechanics. (You can look up mechanics later.)</strong> You should have some livecoding from the prior lecture showing imputation in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> comes with an <code class="docutils literal notranslate"><span class="pre">impute</span></code> class described in the <a class="reference external" href="https://scikit-learn.org/stable/modules/impute.html">official docs</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># silly data</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="mi">3</span>  <span class="p">],</span>
+              <span class="p">[</span> <span class="mi">3</span><span class="p">,</span>   <span class="mi">7</span><span class="p">,</span>   <span class="mi">9</span>  <span class="p">],</span>
+              <span class="p">[</span> <span class="mi">3</span><span class="p">,</span>   <span class="mi">5</span><span class="p">,</span>   <span class="mi">2</span>  <span class="p">],</span>
+              <span class="p">[</span> <span class="mi">4</span><span class="p">,</span>   <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">6</span>  <span class="p">],</span>
+              <span class="p">[</span> <span class="mi">8</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span>   <span class="mi">1</span>  <span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># it&#39;s this easy:</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="n">imp</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">imp</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[nan  0.  3.]
+ [ 3.  7.  9.]
+ [ 3.  5.  2.]
+ [ 4. nan  6.]
+ [ 8.  8.  1.]] 
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.5, 0. , 3. ],
+       [3. , 7. , 9. ],
+       [3. , 5. , 2. ],
+       [4. , 5. , 6. ],
+       [8. , 8. , 1. ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">imp.fit_transform(X)</span></code> is the combination of <code class="docutils literal notranslate"><span class="pre">imp.fit(X)</span></code> and <code class="docutils literal notranslate"><span class="pre">imp.transform(X)</span></code>.</p>
+<p>If you have a train/test split, you shouldn’t use <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code>. Instead, use <code class="docutils literal notranslate"><span class="pre">imp.fit(X_train)</span></code> to get the means in the training sample and <code class="docutils literal notranslate"><span class="pre">imp.transform(X_test)</span></code> to apply those to the test data.</p>
+</div>
+<div class="section" id="standardization">
+<h2><span class="section-number">5.4.5.2. </span>Standardization<a class="headerlink" href="#standardization" title="Permalink to this headline">¶</a></h2>
+<p>Effectively, this means that <strong>continuous</strong> variables should have a mean of 0 and a variance of one.</p>
+<p>The <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling"><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> documentation</a> on this is quite good.</p>
+<blockquote>
+<div><p>Standardization of datasets is a <strong>common requirement for many machine learning estimators</strong> implemented in scikit-learn; they might behave badly if the individual features do not more or less look like standard normally distributed data: Gaussian with zero mean and unit variance.</p>
+</div></blockquote>
+<p>Why does this matter? “If a feature has a variance that is orders of magnitude larger than others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.”</p>
+<p><strong>In other words: STANDARDIZATION WILL IMPROVE YOUR PREDICTIONS.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a very simple example</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span>
+                    <span class="p">[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+                    <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]])</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; X_scaled</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>         <span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">X_scaled</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Mean of each var:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">X_scaled</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; STD of each var:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">X_scaled</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> X_scaled
+ ---------------------------------------- 
+ [[ 0.         -1.22474487  1.33630621]
+ [ 1.22474487  0.         -0.26726124]
+ [-1.22474487  1.22474487 -1.06904497]] 
+
+ Mean of each var:
+ ---------------------------------------- 
+ [0. 0. 0.] 
+
+ STD of each var:
+ ---------------------------------------- 
+ [1. 1. 1.] 
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> can scale variables in many ways. Some alternative transforms are faster and some transform non-normal distributions into proto-normal distributions (which can improve the efficacy of many models).</p>
+<p>Visit (you guessed it!) <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling">the documentation</a> for more.</p>
+</div>
+</div>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -758,7 +896,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="04e_pipelines.html" title="previous page"><span class="section-number">5.4.4. </span>Pipelines</a>
-    <a class='right-next' id="next-link" href="04f_optimizing_a_model.html" title="next page"><span class="section-number">5.4.5. </span>Optimizing a Model</a>
+    <a class='right-next' id="next-link" href="04f_optimizing_a_model.html" title="next page"><span class="section-number">5.4.6. </span>Optimizing a Model</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
