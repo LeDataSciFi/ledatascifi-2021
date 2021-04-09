@@ -586,6 +586,11 @@
        5.3.5. Model selection
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="03f_leakage.html">
+       5.3.6. Doing ML Wrong is Easy
+      </a>
+     </li>
     </ul>
     <i class="fas fa-chevron-down">
     </i>
@@ -969,6 +974,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">'Property_state'</span></code> is categorical</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'l_LTV'</span></code> is in the data, but should be dropped (because of <code class="docutils literal notranslate"><span class="pre">remainder='drop'</span></code>)</p></li>
 </ul>
+<p>So here is the raw data:</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span>        <span class="o">=</span> <span class="s1">&#39;https://github.com/LeDataSciFi/ledatascifi-2021/blob/main/data/Fannie_Mae_Plus_Data.gzip?raw=true&#39;</span>
@@ -1139,6 +1145,7 @@
 <li><p>The property state variable is now 50+ variables (one dummy for each state, and a few territories)</p></li>
 <li><p>The numerical variables aren’t changed (there are no missing variables, so the imputation does nothing)</p></li>
 </ul>
+<p>This is the transformed data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">df_after_transform</span> <span class="kn">import</span> <span class="n">df_after_transform</span>
