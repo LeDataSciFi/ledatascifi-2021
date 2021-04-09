@@ -1,0 +1,997 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5.4.3. Cross-Validation &#8212; LeDataSciFi-2021</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5.4.4. Pipelines" href="04e_pipelines.html" />
+    <link rel="prev" title="5.4.2. An intro to SK-learn + Fitting One Model" href="04c_onemodel.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">LeDataSciFi-2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  About the class
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/objectives.html">
+   Objectives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/outcomes.html">
+   Outcomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/about_us.html">
+   About us + office hours
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/structure_and_policies.html">
+   Course structure + policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/gradeoverview.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/acknowledgments.html">
+   Gratitude
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Schedule, tips, resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/schedule.html">
+   Dashboard, key links, schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/resources.html">
+   Help + resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tips.html">
+   Tips and hacks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments and participation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/howto_do.html">
+   How to start and turn in assignments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/howto_review.html">
+   How to do your peer reviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/asgn_5.html">
+   ASGN 5: Our first full data science assignment
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Textbook
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../01/00_Getting_Started.html">
+   1. Motivation and Getting Started
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/01_Motivation.html">
+     1.1. Motivation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/02_Setup.html">
+     1.2. Set up
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/03_github.html">
+     1.3. Github Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/04_Markdown.html">
+     1.4. Markdown basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/05_jupyterlab.html">
+     1.5. Jupyter Lab Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/06_python.html">
+     1.6. Python Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/07_debugging.html">
+     1.7. Debugging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/07a_errors.html">
+     1.8. Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/08_libraries.html">
+     1.9. Installing libraries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/09_gitignore.html">
+     1.10. Gitignore Files
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../02/10_Golden_1.html">
+   2. Good Analysis Practices
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_2.html">
+     2.1. A case study of bad research
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_3.html">
+     2.2. The golden rules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_4.html">
+     2.3. Good data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_5.html">
+     2.4. When to write functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_6.html">
+     2.5. Reorganizing the bad research folder
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_7.html">
+     2.6. Filepaths
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../03/00_Data_Wrangling_Intro.html">
+   3. Wrangling with Data
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../03/01_Numpy.html">
+     3.1. Numpy
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/01a_NumpyCS.html">
+       3.1.1. Numpy + Scientific Computing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/01b_NumpyBasics.html">
+       3.1.2. A (Very) Short Introduction
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/01c_NumpyPractice.html">
+       3.1.3. Exercises
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/01d_NumpyResources.html">
+       3.1.4. More Resources
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/01d_NumpyResources.html#survey">
+       3.1.5. Survey
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../03/02a_pandasIntro.html">
+     3.2. Pandas
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02a_pandasTips.html">
+       3.2.1. Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02b_pandasVocab.html">
+       3.2.2. Vocab and Long vs Wide Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02c_commonFcns.html">
+       3.2.3. Common Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02d_temp.html">
+       3.2.4. Temp. vs Perm. Objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02e_eda_golden.html">
+       3.2.5. Golden Rules + EDA
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02f_chains.html">
+       3.2.6. Pandas Chains
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02g_commontasks.html">
+       3.2.7. Common Tasks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02h_exercises.html">
+       3.2.8. Exercises
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02j_resourcesAndSum.html">
+       3.2.9. Summary and Resources
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../03/04a-dataviz.html">
+     3.3. Data Visualization
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/04b-whyplot.html">
+       3.3.1. The Role of Viz in Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/04c-makeplot.html">
+       3.3.2. Making a Plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/04d-whichplot.html">
+       3.3.3. Which Plot Type Should I Use?
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/04e-visualEDA.html">
+       3.3.4. Visual EDA
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/04f-betterplots.html">
+       3.3.5. Better Plots
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../03/05a-otherskills.html">
+     3.4. Other (Important) Data Wrangling Skills
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/05b_merging.html">
+       3.4.1. Merging
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/05c_missingdata.html">
+       3.4.2. Dealing with Missing Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/05d_outliers.html">
+       3.4.3. Dealing with Outliers
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../04/00_World_Wide_Data.html">
+   4. Accessing the World of Data
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/01_Intro_to_scraping.html">
+     4.1. Getting Data off the Web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/01a_openingAndParsing.html">
+     4.2. Opening + Parsing
+     <em>
+      a
+     </em>
+     Webpage
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/01b_spiders.html">
+     4.3. Building a spider
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../04/02_strings.html">
+     4.4. Strings
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02a_Python%20Strings.html">
+       4.4.1. Working with Python Strings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02b_regex.html">
+       4.4.2. Regex basics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02c_developing%20a%20regex.html">
+       4.4.3. Developing a regex
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02d_RegexApplication.html">
+       4.4.4. Finding words near each other
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="00_intro.html">
+   5. Data Science for Finance
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="01_bigpicture.html">
+     5.1. Modeling and Teamwork
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="01a_MLgonewrong.html">
+       5.1.1. Machine Learning Gone Wrong
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="01b_model_process.html">
+       5.1.2. The modeling process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="01c_teams.html">
+       5.1.3. Coding in Teams
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="01d_sharingBigFiles.html">
+       5.1.4. Sharing large files
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="02_reg.html">
+     5.2. Regression
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="02a_basics.html">
+       5.2.1. Basics and Notation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02b_mechanics.html">
+       5.2.2. Mechanics of running regressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02c_goodnessOfFit.html">
+       5.2.3. Goodness of Fit
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02d_interpretingCoefs.html">
+       5.2.4. Interpreting regression coefficients
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02e_statisticalSig.html">
+       5.2.5. Statistical significance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02g_summary.html">
+       5.2.6. Summary and Resources
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="03_ML.html">
+     5.3. Intro to Machine Learning
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="03a_ML_obj_and_tradeoff.html">
+       5.3.1. The objective of machine learning
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="03c_ModelEval.html">
+       5.3.2. Model evaluation via cross validation (CV)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="03c1_OOS.html">
+       5.3.3. Model evaluation via Out-of-Sample (OOS)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="03d_whatToMax.html">
+       5.3.4. Evaluating models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="03e_whichModel.html">
+       5.3.5. Model selection
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="reference internal" href="04a_SKLearn.html">
+     5.4. Scikit-Learn for ML
+    </a>
+    <ul class="current collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="04b_best_practices.html">
+       5.4.1. Best Practice Pseudo Code
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04c_onemodel.html">
+       5.4.2. SKLearn Intro
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       5.4.3. Cross-Validation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04e_pipelines.html">
+       5.4.4. Pipelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04e1_preprocessing.html">
+       5.4.5. Preprocessing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04f_optimizing_a_model.html">
+       5.4.6. Optimizing a Model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04h_putting_together.html">
+       5.4.7. All at Once
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/05/04d_crossval.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/LeDataSciFi/ledatascifi-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/LeDataSciFi/ledatascifi-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/05/04d_crossval.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/LeDataSciFi/ledatascifi-2021/edit/main/content/05/04d_crossval.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/LeDataSciFi/ledatascifi-2021/main?urlpath=lab/tree/content/05/04d_crossval.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/LeDataSciFi/ledatascifi-2021/blob/main/content/05/04d_crossval.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cv-in-practice">
+   5.4.3.1. CV in practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-set-up-your-test-and-train-split-samples">
+     5.4.3.1.1.
+     <strong>
+      STEP 1:
+     </strong>
+     Set up your test and train split samples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-set-up-the-cv">
+     5.4.3.1.2.
+     <strong>
+      STEP 2:
+     </strong>
+     Set up the CV
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-step-pipelines">
+   5.4.3.2. Next step: Pipelines
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="cross-validation">
+<h1><span class="section-number">5.4.3. </span>Cross-Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h1>
+<p>Cross-validation is a step where we take our training sample and further divide it in many folds, as in the illustration here:</p>
+<img src="img/feature_5_fold_cv.jpg" alt="From DS100" style="width:300px;">  
+<p>As we talked about in the last chapter, cross-validation allows us to test our models outside the training data more often. This trick reduces the likelihood of overfitting and improves generalization: It <em>should</em> improve our model’s performance when we apply it outside the training data.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I say “<em>should</em>” because the exact manner in which you create the folds matters.</p>
+</div>
+<ul class="simple">
+<li><p><strong>If your data has groups</strong> (i.e. repeated observations for a given firm), you should use <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#group-cv">group-wise cross-validation</a>, like <code class="docutils literal notranslate"><span class="pre">GroupKFold</span></code> to make sure no group is in the training and validation partitions of the fold</p></li>
+<li><p><strong>If your data and/or task is time dependent</strong>, like predicting stock returns,  you should use a <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#timeseries-cv">time-wise cross-validation</a>, like <code class="docutils literal notranslate"><span class="pre">TimeSeriesSplit</span></code> to ensure that the validation partitions are subsequent to the training sample</p></li>
+</ul>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Illustration: If you emulate the simple folding method as depicted in the above graphic for stock return data, some folds will end up testing your model on data from <em>before</em> the periods where the model was estimated!</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="cv-in-practice">
+<h2><span class="section-number">5.4.3.1. </span>CV in practice<a class="headerlink" href="#cv-in-practice" title="Permalink to this headline">¶</a></h2>
+<p>Like before, let’s load the data. Notice I consolidated the import lines at the top.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">url</span>        <span class="o">=</span> <span class="s1">&#39;https://github.com/LeDataSciFi/ledatascifi-2021/blob/main/data/Fannie_Mae_Plus_Data.gzip?raw=true&#39;</span>
+<span class="n">fannie_mae</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">compression</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">y</span>          <span class="o">=</span> <span class="n">fannie_mae</span><span class="o">.</span><span class="n">Original_Interest_Rate</span>
+<span class="n">fannie_mae</span> <span class="o">=</span> <span class="p">(</span><span class="n">fannie_mae</span>
+                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">l_credscore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;Borrower_Credit_Score_at_Origination&#39;</span><span class="p">]),</span>
+                          <span class="n">l_LTV</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;Original_LTV_(OLTV)&#39;</span><span class="p">]),</span>
+                         <span class="p">)</span>
+              <span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="o">-</span><span class="mi">11</span><span class="p">:]</span> <span class="c1"># limit to these vars for the sake of this example</span>
+             <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-1-set-up-your-test-and-train-split-samples">
+<h3><span class="section-number">5.4.3.1.1. </span><strong>STEP 1:</strong> Set up your test and train split samples<a class="headerlink" href="#step-1-set-up-your-test-and-train-split-samples" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># this helps us control the randomness so we can reproduce results exactly</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">fannie_mae</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>An important digression:</strong> Now that we’ve introduced some of the conceptual issues with how you create folds for CV, let’s revisit this <code class="docutils literal notranslate"><span class="pre">test_train_split</span></code> code above. <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#using-cross-validation-iterators-to-split-train-and-test">This page</a> says <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> uses <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#random-permutations-cross-validation-a-k-a-shuffle-split">ShuffleSplit</a>. This method does not divide by time or any group type.</p>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Q: Does this data need special attention to how we divide it up?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">A question to ponder, in class perhaps…</p>
+</div>
+</details><p>If you want to use any other CV iterators to divide up your sample, you can:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Just replace &quot;GroupShuffleSplit&quot; with your CV of choice,</span>
+<span class="c1"># and update the contents of split() as needed</span>
+
+<span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
+    <span class="n">GroupShuffleSplit</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Back to our regularly scheduled “CV in Practice” programming.</p>
+</div>
+<div class="section" id="step-2-set-up-the-cv">
+<h3><span class="section-number">5.4.3.1.2. </span><strong>STEP 2:</strong> Set up the CV<a class="headerlink" href="#step-2-set-up-the-cv" title="Permalink to this headline">¶</a></h3>
+<p>SK-learn makes cross-validation pretty easy. The <code class="docutils literal notranslate"><span class="pre">cross_validate(&quot;estimator&quot;,X_train,y_train,cv,scoring,...)</span></code> function (<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html">documentation here</a>) will</p>
+<ol class="simple">
+<li><p>Create folds in X_train and y_train using the method you put in the <code class="docutils literal notranslate"><span class="pre">cv</span></code> parameter. For each fold, it will create a smaller “training partition” and “testing partition” like in the figure at the top of this page.</p></li>
+<li><p>For each fold,</p>
+<ol class="simple">
+<li><p>It will fit your “estimator” (as if you ran <code class="docutils literal notranslate"><span class="pre">estimator.fit(X_trainingpartition,y_trainingpartition)</span></code>) on the smaller training partition it creates. <strong>Your estimator will be a “pipeline” object</strong> (<a class="reference internal" href="04e_pipelines.html"><span class="doc std std-doc">covered in detail on the next page</span></a>) that tells sklearn to apply a series of steps to the data (preprocessing, etc.), culminating in a model.</p></li>
+<li><p>Use that fitted estimator on the testing partition (as if you ran <code class="docutils literal notranslate"><span class="pre">estimator.predict(X_testingpartition)</span></code> will apply all of the data transformations in the pipeline and use the estimated model on it)</p></li>
+<li><p>Score those predictions with the function(s) you put in <code class="docutils literal notranslate"><span class="pre">scoring</span></code></p></li>
+</ol>
+</li>
+<li><p>Output a dictionary object with performance data</p></li>
+</ol>
+<p>You can even give it multiple scoring metrics to evaluate.</p>
+<p>So, you need to set up</p>
+<ol class="simple">
+<li><p>Your preferred folding method (and number of folds)</p></li>
+<li><p>Your estimator</p></li>
+<li><p>Your scoring method (you can specify this inside the cross_validate function)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">cross_validate</span>
+
+<span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                          <span class="c1"># set up fold method</span>
+<span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>               <span class="c1"># set up model/estimator</span>
+<span class="n">cross_validate</span><span class="p">(</span><span class="n">ridge</span><span class="p">,</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span>
+              <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>     <span class="c1"># tell it the scoring method here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.01695871, 0.00604463, 0.00346589, 0.0063622 , 0.00415468]),
+ &#39;score_time&#39;: array([0.00298142, 0.0017314 , 0.00103474, 0.0025425 , 0.        ]),
+ &#39;test_score&#39;: array([0.90789446, 0.89926394, 0.900032  , 0.90479828, 0.90327986])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wow, that was easy! Just 3 lines of code (and an import)</p>
+</div>
+<p>And we can output test score statistics like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">ridge</span><span class="p">,</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1"># scores is just a dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9030537085469961
+0.003162930786979486
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="next-step-pipelines">
+<h2><span class="section-number">5.4.3.2. </span>Next step: Pipelines<a class="headerlink" href="#next-step-pipelines" title="Permalink to this headline">¶</a></h2>
+<p>The model above</p>
+<ul class="simple">
+<li><p>Only uses a few continuous variables: what if we want to include other variable types (like categorical)?</p></li>
+<li><p>Uses the variables as given: ML algorithms often need you to transform your variables</p></li>
+<li><p>Doesn’t deal with any data problems (e.g. missing values or outliers)</p></li>
+<li><p>Doesn’t create any interaction terms or polynomial transformations</p></li>
+<li><p>Uses every variable I give it: But if your input data had 400 variables, you’d be in danger of overfitting!</p></li>
+</ul>
+<p>At this point, you are capable of solving all of these problems. (For example, you could clean the data in pandas.)</p>
+<p>But for our models to be robust to evil monsters like “data leakage”, we need the fixes to be done within pipelines.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="04c_onemodel.html" title="previous page"><span class="section-number">5.4.2. </span>An intro to SK-learn + Fitting One Model</a>
+    <a class='right-next' id="next-link" href="04e_pipelines.html" title="next page"><span class="section-number">5.4.4. </span>Pipelines</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Prof. Donald Bowen<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            You're doing well, keep going!
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
