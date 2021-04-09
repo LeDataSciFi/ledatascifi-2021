@@ -806,6 +806,13 @@
  [ 8.  8.  1.]] 
 </pre></div>
 </div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.5, 0. , 3. ],
+       [3. , 7. , 9. ],
+       [3. , 5. , 2. ],
+       [4. , 5. , 6. ],
+       [8. , 8. , 1. ]])
+</pre></div>
+</div>
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">imp.fit_transform(X)</span></code> is the combination of <code class="docutils literal notranslate"><span class="pre">imp.fit(X)</span></code> and <code class="docutils literal notranslate"><span class="pre">imp.transform(X)</span></code>.</p>
@@ -839,6 +846,23 @@
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; X_scaled</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>         <span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">X_scaled</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Mean of each var:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">X_scaled</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; STD of each var:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">X_scaled</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> X_scaled
+ ---------------------------------------- 
+ [[ 0.         -1.22474487  1.33630621]
+ [ 1.22474487  0.         -0.26726124]
+ [-1.22474487  1.22474487 -1.06904497]] 
+
+ Mean of each var:
+ ---------------------------------------- 
+ [0. 0. 0.] 
+
+ STD of each var:
+ ---------------------------------------- 
+ [1. 1. 1.] 
 </pre></div>
 </div>
 </div>

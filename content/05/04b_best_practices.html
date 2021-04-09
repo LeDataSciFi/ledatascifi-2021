@@ -751,8 +751,7 @@
 <ol>
 <li><p>All of your import functions</p></li>
 <li><p>Load data</p></li>
-<li><p>Split your data into 2 subsamples: a “test” and “train” portion as <a class="reference internal" href="03_ML.html"><span class="doc std std-doc">in this page</span></a> or <a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">this page</span></a> or <a class="reference internal" href="03c1_OOS.html"><span class="doc std std-doc">this page</span></a>. This is the first arrow in the picture below. We will do all of our work on the “train” sample.
-<img src="img/feature_5_fold_cv.jpg" alt="From DS100-1" style="width:300px"></p></li>
+<li><p>Split your data into 2 subsamples: a “test” and “train” portion as <a class="reference internal" href="03_ML.html"><span class="doc std std-doc">in this page</span></a> or <a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">this page</span></a> or <a class="reference internal" href="03c1_OOS.html"><span class="doc std std-doc">this page</span></a>. This is the first arrow in the picture below.<a class="footnote-reference brackets" href="#pic" id="id1">1</a> We will do all of our work on the “train” sample.</p></li>
 <li><p>Before modelling, do EDA (<strong>on the training data only!</strong>)</p>
 <ul class="simple">
 <li><p>Sample basics: What is the unit of observation? What time spans are covered?</p></li>
@@ -774,7 +773,7 @@
 <li><p>Combine those pipes into “preprocessing” pipe using <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer">ColumnTransformer</a></p></li>
 <li><p>Set up your cross validation method:</p>
 <ul class="simple">
-<li><p>The picture above illustrates 5 folds apparently based on the row number.</p></li>
+<li><p>The picture below illustrates 5 folds apparently based on the row number.</p></li>
 <li><p>There are many <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#splitter-classes">CV splitters</a> available, including TimeSeriesSplit (a starting point for asset price predictions) and <a class="reference external" href="https://github.com/getgaurav2/scikit-learn/blob/d4a3af5cc9da3a76f0266932644b884c99724c57/sklearn/model_selection/_split.py#L2243">GroupTimesSeriesSplit</a> is in development (which addresses a core problem with TimeSeriesSplit, and <a class="reference external" href="https://www.kaggle.com/jorijnsmit/found-the-holy-grail-grouptimeseriessplit">is shown in practice here</a>)</p></li>
 </ul>
 </li>
@@ -845,6 +844,13 @@
 </div>
 </div>
 </div>
+<hr class="docutils" />
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="pic"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><img alt="" src="../../_images/feature_5_fold_cv.jpg" /></p>
+</dd>
+</dl>
 </div>
 
     <script type="text/x-thebe-config">
