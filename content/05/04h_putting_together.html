@@ -785,14 +785,19 @@
 <ul class="simple">
 <li><p>Exploring your data endlessly</p></li>
 <li><p>Preprocessing data in a pipeline (data leakage is bad!) that utilizes what you learned via EDA (imputation, scaling, and transformations)</p></li>
-<li><p>Exploring preprocessing alternatives</p></li>
+<li><p>Exploring preprocessing alternatives in your pipeline optimization</p></li>
 <li><p>Feature engineering: Creating new variables via interactions (think: X3 = X1*X2)</p></li>
 <li><p>Feature selection/reduction: Which X variables to include. Too many variables will lead to overfitting.</p>
 <ul>
 <li><p>Common options: <code class="docutils literal notranslate"><span class="pre">SelectFromModel</span></code>, <code class="docutils literal notranslate"><span class="pre">LassoCV</span></code>, <code class="docutils literal notranslate"><span class="pre">RFECV</span></code></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.kaggle.com/kashnitsky/topic-10-gradient-boosting">Gradient Boosting</a> (<code class="docutils literal notranslate"><span class="pre">xgboost</span></code>) and <a class="reference external" href="https://www.youtube.com/watch?v=yrTW5YTmFjw">ensemble models</a></p></li>
+<li><p>Gradient Boosting, discussed <a class="reference external" href="https://www.kaggle.com/kashnitsky/topic-10-gradient-boosting">here</a> and <a class="reference external" href="https://www.youtube.com/watch?v=yrTW5YTmFjw">here</a>, and ensemble + stacked predictors</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">xgboost</span></code> and <code class="docutils literal notranslate"><span class="pre">lightGBM</span></code> are the go to implementations, and <code class="docutils literal notranslate"><span class="pre">HistGradientBoostingRegressor</span></code> is the analogue in sk-learn</p></li>
+<li><p>If you just sk-learn for gradient boosting, look for the “Hist” in the function name! (Newer, much faster.)</p></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>

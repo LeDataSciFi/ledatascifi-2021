@@ -40,6 +40,11 @@ I wrote a section of tips in the [homework guidelines](../assignments/howto_do.h
 
 As discussed [here](../01/07_debugging.html#seriously-print-your-data-and-objects-often).
 
+But I really like [pandas-profiling](https://github.com/pandas-profiling/pandas-profiling) for initial examination of variables and [dabl](https://dabl.github.io/0.2.0/user_guide.html) is good at "providing a quick overview via visualizations, as well as convenient preprocessing and model search for machine learning."
+
+Neither of those packages substitute for LOOKING at data, but they get you going!
+
+
 ## Community Codebook
 
 You'll build your own codebook, a list of recipes you use repeatedly, as the semester goes on.
