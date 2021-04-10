@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.4.1. Putting the principles from last chapter into code &#8212; LeDataSciFi-2021</title>
+    <title>5.4.1. Principles into Practice &#8212; LeDataSciFi-2021</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -633,7 +633,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04h_putting_together.html">
-       5.4.7. All at Once
+       5.4.7. Many Models
       </a>
      </li>
     </ul>
@@ -752,8 +752,9 @@
         
               <div>
                 
-  <div class="section" id="putting-the-principles-from-last-chapter-into-code">
-<h1><span class="section-number">5.4.1. </span>Putting the principles from last chapter into code<a class="headerlink" href="#putting-the-principles-from-last-chapter-into-code" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="principles-into-practice">
+<h1><span class="section-number">5.4.1. </span>Principles into Practice<a class="headerlink" href="#principles-into-practice" title="Permalink to this headline">¶</a></h1>
+<p>Let’s put the principles from last chapter into code. Here is the pseudocode:</p>
 <ol>
 <li><p>All of your import functions</p></li>
 <li><p>Load data</p></li>
@@ -770,14 +771,14 @@
 <li><p>For categorical variables - maybe try a box plot for the various levels?</p></li>
 </ul>
 </li>
-<li><p>Now decide how you’d clean the data (imputing missing values, scaling variables, encoding categorical variables). These lessons will go into the preprocessing portion of your pipeline below. The <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html">sklearn guide on preprocessing</a> is very informative!</p></li>
+<li><p>Now decide how you’d clean the data (imputing missing values, scaling variables, encoding categorical variables). These lessons will go into the preprocessing portion of your pipeline below. The <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html">sklearn guide on preprocessing</a> is very informative, as <a class="reference internal" href="04e1_preprocessing.html"><span class="doc std std-doc">this page <strong>and the video I link to therein.</strong></span></a></p></li>
 </ul>
 </li>
-<li><p>Prepare to optimize a series of models</p>
+<li><p>Prepare to optimize a series of models (<a class="reference internal" href="04e_pipelines.html"><span class="doc std std-doc">covered here</span></a>)</p>
 <ol class="simple">
 <li><p>Set up one pipeline to clean each type of variable</p></li>
-<li><p>Combine those pipes into “preprocessing” pipe using <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer">ColumnTransformer</a></p></li>
-<li><p>Set up your cross validation method:</p>
+<li><p>Combine those pipes into a “preprocessing” pipeline using <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer"><code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code></a></p></li>
+<li><p><a class="reference internal" href="04d_crossval.html"><span class="doc std std-doc">Set up your cross validation method</span></a>:</p>
 <ul class="simple">
 <li><p>The picture below illustrates 5 folds apparently based on the row number.</p></li>
 <li><p>There are many <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#splitter-classes">CV splitters</a> available, including TimeSeriesSplit (a starting point for asset price predictions) and <a class="reference external" href="https://github.com/getgaurav2/scikit-learn/blob/d4a3af5cc9da3a76f0266932644b884c99724c57/sklearn/model_selection/_split.py#L2243">GroupTimesSeriesSplit</a> is in development (which addresses a core problem with TimeSeriesSplit, and <a class="reference external" href="https://www.kaggle.com/jorijnsmit/found-the-holy-grail-grouptimeseriessplit">is shown in practice here</a>)</p></li>
@@ -786,9 +787,9 @@
 <li><p>Set up your scoring <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#sklearn-metrics-metrics">metric</a> as discussed <a class="reference internal" href="03d_whatToMax.html"><span class="doc std std-doc">here</span></a></p></li>
 </ol>
 </li>
-<li><p><span class="xref myst">Optimize candidate model 1</span> <em>on the training data</em></p>
+<li><p><a class="reference internal" href="04f_optimizing_a_model.html"><span class="doc std std-doc">Optimize candidate model 1</span></a> <em>on the training data</em></p>
 <ol class="simple">
-<li><p>Set up pipeline that combines preprocessing, estimator</p></li>
+<li><p>Set up <a class="reference internal" href="04e_pipelines.html"><span class="doc std std-doc">a pipeline</span></a> that combines preprocessing, estimator</p></li>
 <li><p>Set up a hyper param grid</p></li>
 <li><p>Find optimal hyper params (e.g. gridsearchcv)</p></li>
 <li><p>Save pipeline with optimal params in place</p></li>
@@ -814,7 +815,7 @@
 <span class="c1">## pre-modeling (on the training data only!)</span>
 
 <span class="c1"># do lots of EDA</span>
-<span class="c1"># look for missing values, which variables are what type, and outliers (copy from a6 prompt)</span>
+<span class="c1"># look for missing values, which variables are what type, and outliers </span>
 <span class="c1"># figure out how you&#39;d clean the data (imputation, scaling, encoding categorical vars)</span>
 <span class="c1"># these lessons will go into the preprocessign portion of your pipeline </span>
 
@@ -822,17 +823,17 @@
 
 <span class="c1"># set up pipeline to clean each type of variable (1 pipe per var type)</span>
 <span class="c1"># combine those pipes into &quot;preprocess&quot; pipe</span>
-<span class="c1"># set up cv (can set up iterable to do OOS! or TimeSeriesSplit, or Snows(?))</span>
+<span class="c1"># set up cv (can set up iterable to do OOS! or TimeSeriesSplit, or...)</span>
 <span class="c1"># set up scoring </span>
 
-<span class="c1">## optimize candidate model type #1: (link to optimizing one model page   04d_optimizing_a_model)</span>
+<span class="c1">## optimize candidate model type #1: </span>
 
 <span class="c1">#     set up pipeline (combines preprocessing, estimator)</span>
 <span class="c1">#     set up hyper param grid</span>
-<span class="c1">#     find optimal hyper params (e.g. gridsearchcv)</span>
+<span class="c1">#     find optimal hyper params (gridsearchcv)</span>
 <span class="c1">#     save pipeline with optimal params in place</span>
-<span class="c1">#     (Note: you should spend time interrogating model predictions, plotting and printing</span>
-<span class="c1">#     does the model struggle predicting certain obs? excel at some?)</span>
+<span class="c1">#     (Note: you should spend time interrogating model predictions, plotting and printing.</span>
+<span class="c1">#     Does the model struggle predicting certain obs? Excel at some?)</span>
 
 <span class="c1">## optimize candidate model type #2</span>
 

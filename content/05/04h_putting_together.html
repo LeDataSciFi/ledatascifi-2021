@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.4.7. Putting it all together &#8212; LeDataSciFi-2021</title>
+    <title>5.4.7. Many (and Better) Models &#8212; LeDataSciFi-2021</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -632,7 +632,7 @@
      </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       5.4.7. All at Once
+       5.4.7. Many Models
       </a>
      </li>
     </ul>
@@ -744,6 +744,20 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#better-models">
+   5.4.7.1. Better Models
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -751,10 +765,36 @@
         
               <div>
                 
-  <div class="section" id="putting-it-all-together">
-<h1><span class="section-number">5.4.7. </span>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h1>
-<p>Coming soon - in the meantime, enjoy Baby Yoda:</p>
-<p><img alt="" src="https://media.giphy.com/media/Wn74RUT0vjnoU98Hnt/source.gif" /></p>
+  <div class="section" id="many-and-better-models">
+<h1><span class="section-number">5.4.7. </span>Many (and Better) Models<a class="headerlink" href="#many-and-better-models" title="Permalink to this headline">¶</a></h1>
+<p>At this point, we can</p>
+<ol class="simple">
+<li><p>Set up a pipeline that</p>
+<ul class="simple">
+<li><p>preprocesses different variables differently</p></li>
+<li><p><em>we could add an estimator in the middle to reduce the number of variables, since too many variables can lead to overfitting</em></p></li>
+<li><p>ends in an estimator</p></li>
+</ul>
+</li>
+<li><p>Set up a cross-validation method, and optimize the pipeline parameters via <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> (and save the best model to use on the test sample later)</p></li>
+</ol>
+<p>The <a class="reference internal" href="04b_best_practices.html"><span class="doc std std-doc">best practices page</span></a> outlined a pseudo-code that covers a full project. Following that code, what is left, is for us to try many more models in the pursuit of improving our predictions of the interest rate!</p>
+<div class="section" id="better-models">
+<h2><span class="section-number">5.4.7.1. </span>Better Models<a class="headerlink" href="#better-models" title="Permalink to this headline">¶</a></h2>
+<p>Improving the performance of a model is contingent on the problem domain, data, and the models you’re considering, so generic advice is tough to offer with complete confidence. That said, these are usually good ideas:</p>
+<ul class="simple">
+<li><p>Exploring your data endlessly</p></li>
+<li><p>Preprocessing data in a pipeline (data leakage is bad!) that utilizes what you learned via EDA (imputation, scaling, and transformations)</p></li>
+<li><p>Exploring preprocessing alternatives</p></li>
+<li><p>Feature engineering: Creating new variables via interactions (think: X3 = X1*X2)</p></li>
+<li><p>Feature selection/reduction: Which X variables to include. Too many variables will lead to overfitting.</p>
+<ul>
+<li><p>Common options: <code class="docutils literal notranslate"><span class="pre">SelectFromModel</span></code>, <code class="docutils literal notranslate"><span class="pre">LassoCV</span></code>, <code class="docutils literal notranslate"><span class="pre">RFECV</span></code></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.kaggle.com/kashnitsky/topic-10-gradient-boosting">Gradient Boosting</a> (<code class="docutils literal notranslate"><span class="pre">xgboost</span></code>) and <a class="reference external" href="https://www.youtube.com/watch?v=yrTW5YTmFjw">ensemble models</a></p></li>
+</ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
