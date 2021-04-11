@@ -1,0 +1,1065 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The final project &#8212; LeDataSciFi-2021</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1. Getting the band together" href="../01/00_Getting_Started.html" />
+    <link rel="prev" title="Assignment 5 - Our first real data science project" href="asgn_5.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">LeDataSciFi-2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  About the class
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/objectives.html">
+   Objectives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/outcomes.html">
+   Outcomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/about_us.html">
+   About us + office hours
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/structure_and_policies.html">
+   Course structure + policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/gradeoverview.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/acknowledgments.html">
+   Gratitude
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Schedule, tips, resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/schedule.html">
+   Dashboard, key links, schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/resources.html">
+   Help + resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tips.html">
+   Tips and hacks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments and participation
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="howto_do.html">
+   How to start and turn in assignments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="howto_review.html">
+   How to do your peer reviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="asgn_5.html">
+   ASGN 5: Our first full data science assignment
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The final project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#research-proposal-title">
+   Research Proposal: &lt; Title &gt;
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Textbook
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../01/00_Getting_Started.html">
+   1. Motivation and Getting Started
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/01_Motivation.html">
+     1.1. Motivation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/02_Setup.html">
+     1.2. Set up
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/03_github.html">
+     1.3. Github Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/04_Markdown.html">
+     1.4. Markdown basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/05_jupyterlab.html">
+     1.5. Jupyter Lab Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/06_python.html">
+     1.6. Python Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/07_debugging.html">
+     1.7. Debugging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/07a_errors.html">
+     1.8. Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/08_libraries.html">
+     1.9. Installing libraries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/09_gitignore.html">
+     1.10. Gitignore Files
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../02/10_Golden_1.html">
+   2. Good Analysis Practices
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_2.html">
+     2.1. A case study of bad research
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_3.html">
+     2.2. The golden rules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_4.html">
+     2.3. Good data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_5.html">
+     2.4. When to write functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_6.html">
+     2.5. Reorganizing the bad research folder
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_7.html">
+     2.6. Filepaths
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../03/00_Data_Wrangling_Intro.html">
+   3. Wrangling with Data
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../03/01_Numpy.html">
+     3.1. Numpy
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/01a_NumpyCS.html">
+       3.1.1. Numpy + Scientific Computing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/01b_NumpyBasics.html">
+       3.1.2. A (Very) Short Introduction
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/01c_NumpyPractice.html">
+       3.1.3. Exercises
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/01d_NumpyResources.html">
+       3.1.4. More Resources
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/01d_NumpyResources.html#survey">
+       3.1.5. Survey
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../03/02a_pandasIntro.html">
+     3.2. Pandas
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02a_pandasTips.html">
+       3.2.1. Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02b_pandasVocab.html">
+       3.2.2. Vocab and Long vs Wide Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02c_commonFcns.html">
+       3.2.3. Common Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02d_temp.html">
+       3.2.4. Temp. vs Perm. Objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02e_eda_golden.html">
+       3.2.5. Golden Rules + EDA
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02f_chains.html">
+       3.2.6. Pandas Chains
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02g_commontasks.html">
+       3.2.7. Common Tasks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02h_exercises.html">
+       3.2.8. Exercises
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/02j_resourcesAndSum.html">
+       3.2.9. Summary and Resources
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../03/04a-dataviz.html">
+     3.3. Data Visualization
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/04b-whyplot.html">
+       3.3.1. The Role of Viz in Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/04c-makeplot.html">
+       3.3.2. Making a Plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/04d-whichplot.html">
+       3.3.3. Which Plot Type Should I Use?
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/04e-visualEDA.html">
+       3.3.4. Visual EDA
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/04f-betterplots.html">
+       3.3.5. Better Plots
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../03/05a-otherskills.html">
+     3.4. Other (Important) Data Wrangling Skills
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/05b_merging.html">
+       3.4.1. Merging
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/05c_missingdata.html">
+       3.4.2. Dealing with Missing Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../03/05d_outliers.html">
+       3.4.3. Dealing with Outliers
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../04/00_World_Wide_Data.html">
+   4. Accessing the World of Data
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/01_Intro_to_scraping.html">
+     4.1. Getting Data off the Web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/01a_openingAndParsing.html">
+     4.2. Opening + Parsing
+     <em>
+      a
+     </em>
+     Webpage
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/01b_spiders.html">
+     4.3. Building a spider
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../04/02_strings.html">
+     4.4. Strings
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02a_Python%20Strings.html">
+       4.4.1. Working with Python Strings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02b_regex.html">
+       4.4.2. Regex basics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02c_developing%20a%20regex.html">
+       4.4.3. Developing a regex
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02d_RegexApplication.html">
+       4.4.4. Finding words near each other
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05/00_intro.html">
+   5. Data Science for Finance
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../05/01_bigpicture.html">
+     5.1. Modeling and Teamwork
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/01a_MLgonewrong.html">
+       5.1.1. Machine Learning Gone Wrong
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/01b_model_process.html">
+       5.1.2. The modeling process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/01c_teams.html">
+       5.1.3. Coding in Teams
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/01d_sharingBigFiles.html">
+       5.1.4. Sharing large files
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../05/02_reg.html">
+     5.2. Regression
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/02a_basics.html">
+       5.2.1. Basics and Notation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/02b_mechanics.html">
+       5.2.2. Mechanics of running regressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/02c_goodnessOfFit.html">
+       5.2.3. Goodness of Fit
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/02d_interpretingCoefs.html">
+       5.2.4. Interpreting regression coefficients
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/02e_statisticalSig.html">
+       5.2.5. Statistical significance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/02g_summary.html">
+       5.2.6. Summary and Resources
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../05/03_ML.html">
+     5.3. Intro to Machine Learning
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/03a_ML_obj_and_tradeoff.html">
+       5.3.1. The objective of machine learning
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/03c_ModelEval.html">
+       5.3.2. Model evaluation via cross validation (CV)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/03c1_OOS.html">
+       5.3.3. Model evaluation via Out-of-Sample (OOS)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/03d_whatToMax.html">
+       5.3.4. Evaluating models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/03e_whichModel.html">
+       5.3.5. Model selection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/03f_leakage.html">
+       5.3.6. Doing ML Wrong is Easy
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../05/04a_SKLearn.html">
+     5.4. Scikit-Learn for ML
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/04b_best_practices.html">
+       5.4.1. Best Practice Pseudo Code
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/04c_onemodel.html">
+       5.4.2. SKLearn Intro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/04d_crossval.html">
+       5.4.3. Cross-Validation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/04e_pipelines.html">
+       5.4.4. Pipelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/04e1_preprocessing.html">
+       5.4.5. Preprocessing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/04f_optimizing_a_model.html">
+       5.4.6. Optimizing a Model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05/04h_putting_together.html">
+       5.4.7. Many Models
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05_thefuture.html">
+     5.5. The Future
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/assignments/project.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/LeDataSciFi/ledatascifi-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/LeDataSciFi/ledatascifi-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/assignments/project.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/LeDataSciFi/ledatascifi-2021/edit/main/content/assignments/project.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/LeDataSciFi/ledatascifi-2021/main?urlpath=lab/tree/content/assignments/project.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/LeDataSciFi/ledatascifi-2021/blob/main/content/assignments/project.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The final project
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-note-on-ambition">
+     A note on ambition
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#initial-proposals">
+     Initial proposals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#research-proposal-title">
+   Research Proposal: &lt; Title &gt;
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-question">
+     Research Question
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#necessary-data">
+     Necessary Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#final-proposals">
+     Final proposals
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#project-status-report">
+     Project status report
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#report-and-presentation-files">
+     Report and Presentation Files
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-final-project">
+<h1>The final project<a class="headerlink" href="#the-final-project" title="Permalink to this headline">¶</a></h1>
+<p>There is no one way to do all of this, but if you feel as though you can go further, you probably can, and you should.</p>
+<p>The project will have several deliverable stages to keep us on track, according to the <a class="reference internal" href="../about/schedule.html"><span class="doc std std-doc">schedule</span></a>. <em>Changes to that master schedule supercede any dates below.</em></p>
+<ol class="simple">
+<li><p>15% <strong>Project proposal</strong>. Discussed <a class="reference external" href="#initial-proposals">below</a></p></li>
+<li><p>5% <strong>Project proposal (final revision)</strong>. Discussed <a class="reference external" href="#final-proposals">below</a>.</p></li>
+<li><p>20% <strong>Project status report</strong>. Discussed <a class="reference external" href="#project-status-report">below</a>.</p></li>
+<li><p>45% <strong>Written component - report and presentation files</strong>. Discussed <a class="reference external" href="#report-and-presentation-files">below</a>.</p></li>
+<li><p>15% <strong>Presentations</strong>. Discussed <a class="reference external" href="#report-and-presentation-files">below</a>.</p></li>
+</ol>
+<div class="section" id="a-note-on-ambition">
+<h2>A note on ambition<a class="headerlink" href="#a-note-on-ambition" title="Permalink to this headline">¶</a></h2>
+<p>Ambition will be considered when grading the written component and results.</p>
+<p>The goal of the project is not to simply take a pre-cleaned dataset and run a basic analysis. You should collect data, from one or many sources, and combine them into a usable, clean dataset. Consider the depth of your analysis as you gather and clean this data.</p>
+<p>As a silly example: Are you just gathering data about the height and weight of a sample of individuals and looking at the correlation of these two variables? That level is not sufficient for the end goal of this project. You would be better off using this data to predict the gender of an individual, given height and weight entered by a user, and using the data to make these predictions.</p>
+<p>Always ask yourself if you can take your analysis one step further. If you answered yes, go for it! Use your data to extract information, gather this information, and draw conclusions.</p>
+</div>
+<div class="section" id="initial-proposals">
+<h2>Initial proposals<a class="headerlink" href="#initial-proposals" title="Permalink to this headline">¶</a></h2>
+<p><strong>Full instructions are <span class="xref myst">here</span>.</strong></p>
+<ul class="simple">
+<li><p>General idea: The question are you interested in, the data you need to acquire, the variables you’ll use, and the  plan for how you’ll analyze it (what methods you’ll try and why you think they apply to your problem), considerations about how data might impact that.</p></li>
+<li><p>Treat this document as if it is public facing, and a proposal for which you would like research funding. That is, the proposal document should be polished (both in visual formatting and editing) for external audiences.</p></li>
+<li><p>Graded on: question viability, creativity, finance application, plan sketch, writing quality.</p></li>
+</ul>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+<svg viewBox="0 0 36 24" width="36" height="16" xmlns="http://www.w3.org/2000/svg"
+    class="octicon no-title" aria-hidden="true">
+  <g xmlns="http://www.w3.org/2000/svg" class="jp-icon3">
+    <circle cx="0" cy="12" r="6"></circle>
+    <circle cx="18" cy="12" r="6"></circle>
+    <circle cx="36" cy="12" r="6"></circle>
+  </g>
+</svg><div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">In the project repo, modify the README as a group. Use the template below and fill it in.</p>
+<ol class="simple">
+<li><p class="card-text">The research question should be precise (NOT VAGUE), the hypothesis clear, and the metrics well defined. Thorough mechanical</p></li>
+<li><p class="card-text">The necessary data should be realistically acquirable over our shorter time frame. There are a lot of data resources <a class="reference external" href="about/resources.html#resources-tutorials-and-data">on the website</a>, including FRED, <span class="xref myst">ourworldindata.com</span>, SEC’s EDGAR.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- The answer to your specific research question should _shed light_ on the bigger question (although it likely won&#39;t conclusively answer it).
+</pre></div>
+</div>
+<ol class="simple">
+<li><p class="card-text">What are our hypotheses?</p></li>
+<li><p class="card-text">What are our metrics of success?</p></li>
+</ol>
+</div></blockquote>
+<p class="card-text">Acknowledgment: We are effectively answering questions 1.1-1.3 and 2.1-2.3 from <a class="reference external" href="https://www.textbook.ds100.org/ch/01/lifecycle_students_1.html">DS100</a> in this proposal.</p>
+</div>
+</details></div>
+</div>
+<div class="section" id="research-proposal-title">
+<h1>Research Proposal: &lt; Title &gt;<a class="headerlink" href="#research-proposal-title" title="Permalink to this headline">¶</a></h1>
+<p>By X, Y, and Z</p>
+<div class="section" id="research-question">
+<h2>Research Question<a class="headerlink" href="#research-question" title="Permalink to this headline">¶</a></h2>
+<p>This section should cover:</p>
+<ol class="simple">
+<li><p>What do we want to know or what problems are we trying to solve? As in ASGN 5, you should list (1) the “bigger” question/debate/problem you’re interested in, and also (2) the specific research question(s) you’ll actually try to answer.</p>
+<ul class="simple">
+<li><p>The research question will be smaller in scope than the big picture question. But the answer to your specific research question should <em>shed light</em> on the bigger question (although it likely won’t conclusively answer it).</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="necessary-data">
+<h2>Necessary Data<a class="headerlink" href="#necessary-data" title="Permalink to this headline">¶</a></h2>
+<p>This section should cover:</p>
+<ol class="simple">
+<li><p>What does the final dataset need to look like (mostly dictated by the question and the availability of data):</p>
+<ul class="simple">
+<li><p>What is an observation, e.g. a firm, or a firm-year, etc.</p></li>
+<li><p>What is the sample period?</p></li>
+<li><p>What are the sample conditions? (Years, restrictions you anticipate (e.g. exclude or require some industries)</p></li>
+<li><p>What variables are absolutely necessary and what would you like to have if possible?</p></li>
+</ul>
+</li>
+<li><p>What data do we have and what data do we need?</p></li>
+<li><p>How will we collect more data?</p></li>
+<li><p>What are the raw inputs and how will you store them (the folder structure(s) for each input type).</p></li>
+<li><p>Speculate at a high level (not specific code!) about how you’ll transform the raw data into the final form.</p></li>
+</ol>
+</div>
+<div class="section" id="final-proposals">
+<h2>Final proposals<a class="headerlink" href="#final-proposals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Graded on: The improvement from the prior version, how feedback was incorporated, and current status</p></li>
+</ul>
+</div>
+<div class="section" id="project-status-report">
+<h2>Project status report<a class="headerlink" href="#project-status-report" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>General idea: You’ve now acquired the key data and finished most of the data cleaning.</p></li>
+<li><p>Purpose: Needs to show progress and that you’re on track!</p></li>
+<li><p><em>Ideal deliverable</em>: A notebook file with nice data sections describing data source(s) and how you got/cleaned the data. This section could go straight into your final report if it’s polished enough.</p></li>
+<li><p><strong>Actual deliverable</strong> A notebook file that</p>
+<ul>
+<li><p>describes (short bullet points) your data sources,</p></li>
+<li><p>outlines (numbered list, broad steps, not minutia) how you acquired the data (for many groups, the downloading is in a separate file), got the data into python, and if you found any issues with the data you cleaned up (again, possibly a different file)</p></li>
+<li><p>includes a bullet point list of your main observations from your EDA</p></li>
+<li><p>shows your exploratory data analysis (EDA) (tables and figures and whatnot, does not need to be pretty or formatted)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="report-and-presentation-files">
+<h2>Report and Presentation Files<a class="headerlink" href="#report-and-presentation-files" title="Permalink to this headline">¶</a></h2>
+<p>On the due date (listed in the schedule), your repo should be cleaned and polished for publication. That means it should be cleaned of excess and random files, and that folders are sensible (data, temporary, code), the readme helps me/the TA/future visitors explore your repo easily. Your folder structure is up to you and will respond to the nature of your particular project, but I should be able to easily find</p>
+<ul class="simple">
+<li><p>Your final report</p></li>
+<li><p>Your presentation file</p></li>
+<li><p>The code used to scrape and download data (and if you click-and-download anything, a link to the source) can be separate files, and the code used to load, clean, merge, and explore the data.</p></li>
+</ul>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+<strong>What should my final report jupyter file look like?</strong><div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<ul class="simple">
+<li><p class="card-text">Your file should look like a nice report as if built in word, except that it also contains code to produce tables and figures. <em>(Some students are in the habit of submitting jupyter files that have no visibile output. Don’t do that here! We should be able to see the results in the file!)</em></p></li>
+<li><p class="card-text">The code itself should be minimal and clean.</p></li>
+<li><p class="card-text">The structure of any two reports can vary as is dictated by their purpose, goals, and steps. But, it should contain:</p>
+<ul>
+<li><p class="card-text">Start with a summary (goal and main findings in one paragraph)</p></li>
+<li><p class="card-text">An introduction section that motivates why your project is interesting and outlines your approach</p></li>
+<li><p class="card-text">A data section that describes your data sources, the steps you used to acquire and clean the data (a good idea: refer to your code file that does all this), and some of the key insights and observations from your EDA</p></li>
+<li><p class="card-text">An analysis section that explains and shows your steps leading to the main results and tables.</p>
+<ul>
+<li><p class="card-text">Take care to explain why figures and tables lead you to your conclusions.</p></li>
+<li><p class="card-text">Make sure to also carefully describe the methods you are using and why they are appropriate for the question to be answered.</p></li>
+<li><p class="card-text">Summarize and interpret your results (including visualization).</p></li>
+<li><p class="card-text">Provide an evaluation of your approach and discuss any limitations of the methods you used.</p></li>
+<li><p class="card-text">Describe any surprising discoveries that you made and future work.</p></li>
+</ul>
+</li>
+<li><p class="card-text">A short 1-2 paragraph conclusion.</p></li>
+</ul>
+</li>
+</ul>
+<p class="card-text">Obvious caveats for grading: Form matters, check grammar, and cite work you build on. <strong>Plagarism is not acceptable.</strong></p>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+**What should the presentation file look like?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">You can present a powerpoint, a jupyter file, or <a class="reference external" href="https://medium.com/&#64;mjspeck/presenting-code-using-jupyter-notebook-slides-a8a3c3b59d67">jupyter slides</a> (nice!). I’ll leave it up to your group to present in the manner you consider most effective for your project.</p>
+<p class="card-text">Each group will have 15 minutes to present your project, so build your presentation file accordingly. Try to avoid “speed talking” to make the time work. Less is more, usually. Sadly, 15 minutes won’t be enough to show everything you did, so focus on big picture details rather than on the syntax of line 89 of your code.</p>
+<p class="card-text">A presentation’s structure is tailored even more to its material than a report is, so what your slides show is up to you. Be creative, and have fun. Try to convey to myself and your peers why the question is interesting, describe plainly your approach and why it approach makes sense, what your main analytical findings are, and what you concluded from the exercise. Don’t be afraid to “market yourselves”: If you didn’t something impressive (tons and tons of data, or an impressive scraper, or a great model), work that in (but tastefully).</p>
+<p class="card-text">Obvious caveats for grading: Form matters, check grammar, and cite work you build on. <strong>Plagarism is not acceptable.</strong></p>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+<strong>Presentations</strong><div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">I’ll discuss scheduling later.</p>
+<ul class="simple">
+<li><p class="card-text">You have 15 minutes</p></li>
+<li><p class="card-text">Everyone should contribute</p></li>
+<li><p class="card-text">There will be Q&amp;A (from myself)</p></li>
+<li><p class="card-text">Teach your classmates and myself something! Strive for clarity and making something about it memorable.</p></li>
+</ul>
+</div>
+</details></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/assignments"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="asgn_5.html" title="previous page">Assignment 5 - Our first real data science project</a>
+    <a class='right-next' id="next-link" href="../01/00_Getting_Started.html" title="next page"><span class="section-number">1. </span>Getting the band together</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Prof. Donald Bowen<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            You're doing well, keep going!
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
