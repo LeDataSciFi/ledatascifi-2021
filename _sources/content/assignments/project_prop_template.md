@@ -1,3 +1,11 @@
+#  **Full instructions for the proposals**
+
+In the project repo, modify the README as a group. Use the template below.
+
+1. The research question should be precise (NOT VAGUE), the hypothesis clear, and the metrics well defined. Thorough mechanical 
+1. The necessary data should be realistically acquirable over our shorter time frame. There are a lot of data resources [on the website](about/resources.html#resources-tutorials-and-data), including FRED, [ourworldindata.com](ourworldindata.com), SEC's EDGAR. 
+
+
 > # Research Proposal: < Title >
 > 
 > By X, Y, and Z
