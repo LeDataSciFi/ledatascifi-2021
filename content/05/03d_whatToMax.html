@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.3.4. Evaluating models &#8212; LeDataSciFi-2021</title>
+    <title>&lt;no title&gt; &#8212; LeDataSciFi-2021</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,11 +54,9 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.3.5. Model selection" href="03e_whichModel.html" />
+    <link rel="next" title="5.3.4. Model selection" href="03e_whichModel.html" />
     <link rel="prev" title="5.3.3. Model evaluation via Out-of-Sample (OOS)" href="03c1_OOS.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -180,7 +178,7 @@
   Textbook
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../01/00_Getting_Started.html">
    1. Motivation and Getting Started
@@ -491,11 +489,11 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="00_intro.html">
    5. Data Science for Finance
   </a>
-  <ul class="current collapse-ul">
+  <ul class="collapse-ul">
    <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="01_bigpicture.html">
      5.1. Modeling and Teamwork
@@ -564,11 +562,11 @@
     <i class="fas fa-chevron-down">
     </i>
    </li>
-   <li class="toctree-l2 current active collapsible-parent">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="03_ML.html">
      5.3. Intro to Machine Learning
     </a>
-    <ul class="current collapse-ul">
+    <ul class="collapse-ul">
      <li class="toctree-l3">
       <a class="reference internal" href="03a_ML_obj_and_tradeoff.html">
        5.3.1. The objective of machine learning
@@ -584,19 +582,14 @@
        5.3.3. Model evaluation via Out-of-Sample (OOS)
       </a>
      </li>
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
-       5.3.4. Evaluating models
-      </a>
-     </li>
      <li class="toctree-l3">
       <a class="reference internal" href="03e_whichModel.html">
-       5.3.5. Model selection
+       5.3.4. Model selection
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="03f_leakage.html">
-       5.3.6. Doing ML Wrong is Easy
+       5.3.5. Doing ML Wrong is Easy
       </a>
      </li>
     </ul>
@@ -730,32 +723,19 @@
 
         <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/LeDataSciFi/ledatascifi-2021/main?urlpath=lab/tree/content/05/03d_whatToMax.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/LeDataSciFi/ledatascifi-2021/blob/main/content/05/03d_whatToMax.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -764,80 +744,7 @@
         
               <div>
                 
-  <div class="section" id="evaluating-models">
-<h1><span class="section-number">5.3.4. </span>Evaluating models<a class="headerlink" href="#evaluating-models" title="Permalink to this headline">¶</a></h1>
-<p>On the <a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">cross validation page</span></a>, we said you choose the model that produces the “lowest average validation error” when you do your cross validation tests.</p>
-<p>But wait! How do you measure accuracy of predictions or the model’s fit?</p>
-<p>You need to pick a scoring metric!</p>
-<p>Below, I list the most common statistics to report and consider. <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html">scikit-learn</a>’s documentation lists the full menu.</p>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>If you’re a visual person, the figures below might help.</p>
-<p>In each figure below, a machine learning classifier calls the data points inside the circle positive, the left half are true positives, and the right half are true negatives.</p>
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/e/e7/Sensitivity_and_specificity.svg"><img alt="Sensitivity_and_specificity" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Sensitivity_and_specificity.svg" width="300px" /></a>
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Precisionrecall.svg/800px-Precisionrecall.svg.png"><img alt="Precisionrecall" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Precisionrecall.svg/800px-Precisionrecall.svg.png" style="width: 300px;" /></a>
-</div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Measurement name</p></th>
-<th class="text-align:left head"><p>Measures</p></th>
-<th class="text-align:left head"><p>Useful for predicting</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>R2</p></td>
-<td class="text-align:left"><p><a class="reference internal" href="02c_goodnessOfFit.html"><span class="doc std std-doc">The fraction of variation in the y variable the model explains</span></a></p></td>
-<td class="text-align:left"><p>Continuous variables</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Root Mean Squared Error</p></td>
-<td class="text-align:left"><p><em>Size of average squared error. 0 is impossible.</em></p></td>
-<td class="text-align:left"><p>Continuous variable</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Mean Absolute Error</p></td>
-<td class="text-align:left"><p><em>Square errors penalize big prediction errors more. So MAE based models penalize these errors less. Intuitively, this means outliers influence the model less.</em></p></td>
-<td class="text-align:left"><p>Continuous variable</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>True Positive Rate (TPR) aka <strong>“Sensitivity”</strong> aka <strong>“Recall”</strong> = 1-FNR</p></td>
-<td class="text-align:left"><p><em>What fraction of the true positives do you call positive?</em></p></td>
-<td class="text-align:left"><p>Binary variables</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>True Negative Rate (TNR) aka <strong>“Specificity”</strong> = 1-FPR</p></td>
-<td class="text-align:left"><p><em>What fraction of the true negatives do you call negative?</em></p></td>
-<td class="text-align:left"><p>Binary variables</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><strong>“Precision”</strong></p></td>
-<td class="text-align:left"><p><em>How precise are your positive labels? <br> What fraction of what you labeled positive are truly positive?</em></p></td>
-<td class="text-align:left"><p>Binary variables</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p><strong>“Accuracy”</strong></p></td>
-<td class="text-align:left"><p><em>What fraction of predictions made are correct?</em></p></td>
-<td class="text-align:left"><p>Binary variables</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>False Positive Rate (FPR) = 1-TNR</p></td>
-<td class="text-align:left"><p><em>What fraction of the true negatives do you call positive?</em></p></td>
-<td class="text-align:left"><p>Binary variables</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>False Negative Rate (FNR) = 1-TPR</p></td>
-<td class="text-align:left"><p><em>What fraction of the true positives do you call negative?</em></p></td>
-<td class="text-align:left"><p>Binary variables</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>“F-score” or “F1”</p></td>
-<td class="text-align:left"><p><em>The harmonic mean of recall and precision. Intuition: Are you detecting positive cases, and correctly?</em></p></td>
-<td class="text-align:left"><p>Binary variables</p></td>
-</tr>
-</tbody>
-</table>
-<p style="font-size:2em"> Which measurement should you use? </p> 
-<p>It depends! If you have a continuous variable, use R2, MAE, or RMSE.</p>
-<p>If you have a classification problem (the “binary variable” rows in the table above), you have to think about your problem:</p>
-<ul class="simple">
-<li><p>In medical tests more broadly, false negatives are really bad - if someone has cancer, don’t tell them they are cancer free. Thus, medical tests tend to minimize false negatives.</p></li>
-<li><p>Minimizing false negatives is the same as maximizing the true positives, aka the “sensitivity” of a test, since <span class="math notranslate nohighlight">\(FNR=1-TPR\)</span>. Better covid tests have higher specificity, because if someone has covid, we want to know that so we can require a quarantine.</p></li>
-<li><p>In the legal field, false positives (imprisoning an innocent person) are considered worse than false negatives.</p></li>
-<li><p>Identifying terrorists? You might want to maximize the detection rate (“recall”). Of course, simply saying “everyone is a terrorist” is guaranteed to generate a recall rate of 100%! But this rule would have a precision of about 0%! So you also should think about “precision” too. Maybe F1 is the metric for you.</p></li>
-</ul>
-</div>
-
+  
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -867,7 +774,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="03c1_OOS.html" title="previous page"><span class="section-number">5.3.3. </span>Model evaluation via Out-of-Sample (OOS)</a>
-    <a class='right-next' id="next-link" href="03e_whichModel.html" title="next page"><span class="section-number">5.3.5. </span>Model selection</a>
+    <a class='right-next' id="next-link" href="03e_whichModel.html" title="next page"><span class="section-number">5.3.4. </span>Model selection</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
