@@ -1,0 +1,1231 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model Balance and Feature Importance &#8212; LeDataSciFi-2021</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/fin377_specialformatting.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/moviescript.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">LeDataSciFi-2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  About the class
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/about/objectives.html">
+   Objectives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/about/outcomes.html">
+   Outcomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/about/about_us.html">
+   About us + office hours
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/about/structure_and_policies.html">
+   Course structure + policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/about/gradeoverview.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/about/acknowledgments.html">
+   Gratitude
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Schedule, tips, resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/about/schedule.html">
+   Dashboard, key links, schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/about/resources.html">
+   Help + resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/about/tips.html">
+   Tips and hacks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments and participation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/assignments/howto_do.html">
+   How to start and turn in assignments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/assignments/howto_review.html">
+   How to do your peer reviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/assignments/asgn_5.html">
+   ASGN 5: Our first full data science assignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/assignments/project.html">
+   Final projects
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Textbook
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../content/01/00_Getting_Started.html">
+   1. Motivation and Getting Started
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/01/01_Motivation.html">
+     1.1. Motivation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/01/02_Setup.html">
+     1.2. Set up
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/01/03_github.html">
+     1.3. Github Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/01/04_Markdown.html">
+     1.4. Markdown basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/01/05_jupyterlab.html">
+     1.5. Jupyter Lab Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/01/06_python.html">
+     1.6. Python Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/01/07_debugging.html">
+     1.7. Debugging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/01/07a_errors.html">
+     1.8. Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/01/08_libraries.html">
+     1.9. Installing libraries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/01/09_gitignore.html">
+     1.10. Gitignore Files
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../content/02/10_Golden_1.html">
+   2. Good Analysis Practices
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/02/10_Golden_2.html">
+     2.1. A case study of bad research
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/02/10_Golden_3.html">
+     2.2. The golden rules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/02/10_Golden_4.html">
+     2.3. Good data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/02/10_Golden_5.html">
+     2.4. When to write functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/02/10_Golden_6.html">
+     2.5. Reorganizing the bad research folder
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/02/10_Golden_7.html">
+     2.6. Filepaths
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../content/03/00_Data_Wrangling_Intro.html">
+   3. Wrangling with Data
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../content/03/01_Numpy.html">
+     3.1. Numpy
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/01a_NumpyCS.html">
+       3.1.1. Numpy + Scientific Computing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/01b_NumpyBasics.html">
+       3.1.2. A (Very) Short Introduction
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/01c_NumpyPractice.html">
+       3.1.3. Exercises
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/01d_NumpyResources.html">
+       3.1.4. More Resources
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/01d_NumpyResources.html#survey">
+       3.1.5. Survey
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../content/03/02a_pandasIntro.html">
+     3.2. Pandas
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/02a_pandasTips.html">
+       3.2.1. Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/02b_pandasVocab.html">
+       3.2.2. Vocab and Long vs Wide Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/02c_commonFcns.html">
+       3.2.3. Common Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/02d_temp.html">
+       3.2.4. Temp. vs Perm. Objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/02e_eda_golden.html">
+       3.2.5. Golden Rules + EDA
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/02f_chains.html">
+       3.2.6. Pandas Chains
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/02g_commontasks.html">
+       3.2.7. Common Tasks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/02h_exercises.html">
+       3.2.8. Exercises
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/02j_resourcesAndSum.html">
+       3.2.9. Summary and Resources
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../content/03/04a-dataviz.html">
+     3.3. Data Visualization
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/04b-whyplot.html">
+       3.3.1. The Role of Viz in Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/04c-makeplot.html">
+       3.3.2. Making a Plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/04d-whichplot.html">
+       3.3.3. Which Plot Type Should I Use?
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/04e-visualEDA.html">
+       3.3.4. Visual EDA
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/04f-betterplots.html">
+       3.3.5. Better Plots
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../content/03/05a-otherskills.html">
+     3.4. Other (Important) Data Wrangling Skills
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/05b_merging.html">
+       3.4.1. Merging
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/05c_missingdata.html">
+       3.4.2. Dealing with Missing Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/03/05d_outliers.html">
+       3.4.3. Dealing with Outliers
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../content/04/00_World_Wide_Data.html">
+   4. Accessing the World of Data
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/04/01_Intro_to_scraping.html">
+     4.1. Getting Data off the Web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/04/01a_openingAndParsing.html">
+     4.2. Opening + Parsing
+     <em>
+      a
+     </em>
+     Webpage
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/04/01b_spiders.html">
+     4.3. Building a spider
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../content/04/02_strings.html">
+     4.4. Strings
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/04/02a_Python%20Strings.html">
+       4.4.1. Working with Python Strings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/04/02b_regex.html">
+       4.4.2. Regex basics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/04/02c_developing%20a%20regex.html">
+       4.4.3. Developing a regex
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/04/02d_RegexApplication.html">
+       4.4.4. Finding words near each other
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../content/05/00_intro.html">
+   5. Data Science for Finance
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../content/05/01_bigpicture.html">
+     5.1. Modeling and Teamwork
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/01a_MLgonewrong.html">
+       5.1.1. Machine Learning Gone Wrong
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/01b_model_process.html">
+       5.1.2. The modeling process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/01c_teams.html">
+       5.1.3. Coding in Teams
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/01d_sharingBigFiles.html">
+       5.1.4. Sharing large files
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../content/05/02_reg.html">
+     5.2. Regression
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/02a_basics.html">
+       5.2.1. Basics and Notation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/02b_mechanics.html">
+       5.2.2. Mechanics of running regressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/02c_goodnessOfFit.html">
+       5.2.3. Goodness of Fit
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/02d_interpretingCoefs.html">
+       5.2.4. Interpreting regression coefficients
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/02e_statisticalSig.html">
+       5.2.5. Statistical significance
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/02g_summary.html">
+       5.2.6. Summary and Resources
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../content/05/03_ML.html">
+     5.3. Intro to Machine Learning
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/03a_ML_obj_and_tradeoff.html">
+       5.3.1. The objective of machine learning
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/03c_ModelEval.html">
+       5.3.2. Model evaluation via cross validation (CV)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/03c1_OOS.html">
+       5.3.3. Model evaluation via Out-of-Sample (OOS)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/03d_whatToMax.html">
+       5.3.4. Evaluating models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/03e_whichModel.html">
+       5.3.5. Model selection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/03f_leakage.html">
+       5.3.6. Doing ML Wrong is Easy
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../content/05/04a_SKLearn.html">
+     5.4. Scikit-Learn for ML
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/04b_best_practices.html">
+       5.4.1. Best Practice Pseudo Code
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/04c_onemodel.html">
+       5.4.2. SKLearn Intro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/04d_crossval.html">
+       5.4.3. Cross-Validation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/04e_pipelines.html">
+       5.4.4. Pipelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/04e1_preprocessing.html">
+       5.4.5. Preprocessing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/04f_optimizing_a_model.html">
+       5.4.6. Optimizing a Model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../content/05/04h_putting_together.html">
+       5.4.7. Many Models
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../content/05/05_thefuture.html">
+     5.5. The Future
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/L24.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/LeDataSciFi/ledatascifi-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/LeDataSciFi/ledatascifi-2021/issues/new?title=Issue%20on%20page%20%2Flectures/L24.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/LeDataSciFi/ledatascifi-2021/edit/main/lectures/L24.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/LeDataSciFi/ledatascifi-2021/main?urlpath=lab/tree/lectures/L24.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/LeDataSciFi/ledatascifi-2021/blob/main/lectures/L24.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ways-to-deal-with-imbalanced-data">
+   Ways to deal with imbalanced data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practical-tips">
+     🔥🔥🔥 Practical tips: 🔥🔥🔥
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-dealing-with-imbalance">
+   Examples - dealing with imbalance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#class-weighting">
+     Class weighting…
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#undersampling-and-over">
+     Undersampling (and over)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-trees">
+   Visualizing trees
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-importance">
+   Feature importance
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="model-balance-and-feature-importance">
+<h1>Model Balance and Feature Importance<a class="headerlink" href="#model-balance-and-feature-importance" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Classification models with imbalanced data</p></li>
+<li><p>Visualizing trees</p></li>
+<li><p>Feature importance</p></li>
+</ol>
+<p>As I said last class, the main drawback with ensembles is usually imbalanced classification and interpretation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import lots of functions</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span> 
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span><span class="p">,</span> <span class="n">make_column_selector</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span> 
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span> 
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">df_after_transform</span> <span class="kn">import</span> <span class="n">df_after_transform</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">cross_validate</span><span class="p">,</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load data </span>
+<span class="n">loans</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;lendingclub/2013_subsample.zip&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split to test and train (link to split page/sk docs)</span>
+
+<span class="c1"># first let&#39;s separate y from X</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">loans</span><span class="o">.</span><span class="n">loan_status</span> <span class="o">==</span> <span class="s1">&#39;Charged Off&#39;</span>
+<span class="n">y</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">loans</span> <span class="o">=</span> <span class="n">loans</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;loan_status&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># stratify will make sure that test/train both have equal fractions of outcome</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">loans</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## optimize a series of models </span>
+
+<span class="c1"># set up pipeline to clean each type of variable (1 pipe per var type)</span>
+
+<span class="n">numer_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">SimpleImputer</span><span class="p">(),</span><span class="n">StandardScaler</span><span class="p">())</span> 
+<span class="n">cat_pipe</span>   <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">))</span>
+
+<span class="c1"># combine those pipes into &quot;preprocess&quot; pipe</span>
+
+<span class="n">preproc_pipe</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>  
+    <span class="p">[</span> <span class="c1"># arg 1 of ColumnTransformer is a list, so this starts the list</span>
+    <span class="c1"># a tuple for the numerical vars: name, pipe, which vars to apply to</span>
+    <span class="p">(</span><span class="s2">&quot;num_impute&quot;</span><span class="p">,</span> <span class="n">numer_pipe</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]),</span>
+    <span class="c1"># a tuple for the categorical vars: name, pipe, which vars to apply to</span>
+    <span class="p">(</span><span class="s2">&quot;cat_trans&quot;</span><span class="p">,</span> <span class="n">cat_pipe</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;grade&#39;</span><span class="p">])</span>
+    <span class="p">]</span>
+    <span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="s1">&#39;drop&#39;</span> <span class="c1"># you either drop or passthrough any vars not modified above</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Like last lecture, I’ve imported the Lending Club data.</p>
+<p>Like all real datasets, its outcome variable is imbalanced.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    0.844
+True     0.156
+Name: loan_status, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ways-to-deal-with-imbalanced-data">
+<h2>Ways to deal with imbalanced data<a class="headerlink" href="#ways-to-deal-with-imbalanced-data" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Add data (oversample underrepresented group)</p>
+<ul class="simple">
+<li><p>Slower estimations (more data)</p></li>
+</ul>
+</li>
+<li><p>Remove data (undersample overrepresented group)</p>
+<ul class="simple">
+<li><p>Throws data away (hurts predictions!) but estimations faster</p></li>
+<li><p>Tradeoff can be worth it: more speed and possibly similar or better predictions</p></li>
+</ul>
+</li>
+<li><p>Change estimator to “weight” groups equally</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">class-weight=’balanced’</span></code> in trees, logit</p></li>
+<li><p>like oversampling, except no slowdown</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="practical-tips">
+<h3>🔥🔥🔥 Practical tips: 🔥🔥🔥<a class="headerlink" href="#practical-tips" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>What works best varies between applications (no “dominant”)</p></li>
+<li><p>Try weighting if estimator will let you, then undersampling</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="examples-dealing-with-imbalance">
+<h2>Examples - dealing with imbalance<a class="headerlink" href="#examples-dealing-with-imbalance" title="Permalink to this headline">¶</a></h2>
+<p>So this was last time, predictions of default had a precision of 22%, and only 3% of defaults were predicted in advance. (BAD RECALL!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span>
+
+<span class="n">tree_clf</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preproc_pipe</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+<span class="n">tree_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">tree_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># number of rejections under old model</span>
+
+<span class="c1"># print(classification_report(y_test, tree_clf.predict(X_test)) )</span>
+<span class="c1"># plot_confusion_matrix(tree_clf, X_test, y_test, normalize=&#39;pred&#39;) </span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>611
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="class-weighting">
+<h3>Class weighting…<a class="headerlink" href="#class-weighting" title="Permalink to this headline">¶</a></h3>
+<p>…like oversampling but without increasing the training speed. The tip on dealing with imbalanced data is</p>
+<blockquote>
+<div><p>“Try weighting if estimator will let you, then undersampling”</p>
+</div></blockquote>
+<p>So let’s add <code class="docutils literal notranslate"><span class="pre">class_weight='balanced'</span></code> to the Tree.</p>
+<ol class="simple">
+<li><p>So, how well do we do at predicting loan defaults?</p></li>
+<li><p>How “accurate” is our model?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tree_clf</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preproc_pipe</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">))</span>
+<span class="n">tree_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># print(classification_report(y_test, tree_clf.predict(X_test)) )</span>
+<span class="c1"># plot_confusion_matrix(tree_clf, X_test, y_test, normalize=&#39;pred&#39;) </span>
+<span class="c1"># plt.show()</span>
+
+<span class="n">tree_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># number of rejections under old model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11879
+</pre></div>
+</div>
+</div>
+</div>
+<p>So the lessons here:</p>
+<ol class="simple">
+<li><p>Beware high accuracy models unless you see the classification report or confusion matrix!</p></li>
+<li><p>Depending on the application, a lower accuracy score might be strongly preferred if sensitivity/recall or precision matters.</p></li>
+</ol>
+</div>
+<div class="section" id="undersampling-and-over">
+<h3>Undersampling (and over)<a class="headerlink" href="#undersampling-and-over" title="Permalink to this headline">¶</a></h3>
+<p>Undersampling and over sampling can’t be done within sklearn pipelines “out of the box”, so we will install and use a package that extends the sklearn API.</p>
+<p><a class="reference external" href="https://imbalanced-learn.org/">https://imbalanced-learn.org/</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">imbalanced-learn</span></code></p>
+<p>Compare the recall and accuracy to the last class’s version without fixes (3% and 83%).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the under sampler</span>
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
+<span class="c1"># sklearn pipelines won&#39;t work for sampling - use the imblearn pipeline</span>
+<span class="c1"># here I name it differently to clarify that it isnt the sklearn make_pipeline</span>
+<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span> <span class="k">as</span> <span class="n">make_imb_pipeline</span>
+
+<span class="n">tree_clf</span> <span class="o">=</span> <span class="n">make_imb_pipeline</span><span class="p">(</span><span class="n">RandomUnderSampler</span><span class="p">(),</span>
+                             <span class="n">preproc_pipe</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+<span class="n">tree_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">tree_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span> <span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">tree_clf</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+       False       0.89      0.59      0.71     22756
+        True       0.22      0.62      0.32      4205
+
+    accuracy                           0.60     26961
+   macro avg       0.56      0.61      0.52     26961
+weighted avg       0.79      0.60      0.65     26961
+</pre></div>
+</div>
+<img alt="../_images/L24_17_1.png" src="../_images/L24_17_1.png" />
+</div>
+</div>
+<p>Over sampling is procedurally the same.</p>
+<p>In this example, the recall on defaults is a little lower than the undersampling (way to go undersampling!), while most other numbers are slightly higher.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">RandomOverSampler</span>
+
+<span class="n">tree_clf</span> <span class="o">=</span> <span class="n">make_imb_pipeline</span><span class="p">(</span><span class="n">RandomOverSampler</span><span class="p">(),</span>
+                             <span class="n">preproc_pipe</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+<span class="n">tree_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">tree_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span> <span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">tree_clf</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+       False       0.89      0.60      0.72     22756
+        True       0.22      0.61      0.32      4205
+
+    accuracy                           0.60     26961
+   macro avg       0.55      0.60      0.52     26961
+weighted avg       0.79      0.60      0.65     26961
+</pre></div>
+</div>
+<img alt="../_images/L24_19_1.png" src="../_images/L24_19_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualizing-trees">
+<h2>Visualizing trees<a class="headerlink" href="#visualizing-trees" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Plotting a tree: <code class="docutils literal notranslate"><span class="pre">tree.plot_tree(&lt;tree</span> <span class="pre">object&gt;)</span></code></p>
+<ul class="simple">
+<li><p>Good idea: Restrict depth to 3 or so layers, then plot</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtreeviz</span></code> is a really nice tree visualizing package</p></li>
+<li><p>Other</p></li>
+</ul>
+</li>
+<li><p>Plot the “decision surface”.</p>
+<ul class="simple">
+<li><p>Can be a pain with real data…</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># i&#39;m just changing this to only use 2 numerical values</span>
+<span class="n">preproc_pipe</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">([(</span><span class="s2">&quot;num_impute&quot;</span><span class="p">,</span> <span class="n">numer_pipe</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">,</span><span class="s1">&#39;dti&#39;</span><span class="p">])]</span>
+                                <span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="s1">&#39;drop&#39;</span><span class="p">)</span>
+
+<span class="c1"># only do tree to 2 levels</span>
+<span class="n">tree_clf</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preproc_pipe</span><span class="p">,</span> 
+                         <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span>
+                                                <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">tree_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">tree_clf</span><span class="p">[</span><span class="s1">&#39;decisiontreeclassifier&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+              <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">,</span><span class="s1">&#39;dti&#39;</span><span class="p">],</span>
+              <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Repaid&#39;</span><span class="p">,</span><span class="s1">&#39;Charge Off&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L24_21_0.png" src="../_images/L24_21_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">df_after_transform</span> <span class="kn">import</span> <span class="n">df_after_transform</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_after_transform</span><span class="p">(</span><span class="n">preproc_pipe</span><span class="p">,</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># from https://scikit-learn.org/stable/auto_examples/tree/plot_iris_dtc.html</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input tag_hide-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/L24_23_0.png" src="../_images/L24_23_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="feature-importance">
+<h2>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>One way to visualize importance</p></li>
+<li><p>Akin to looking at top levels of a tree</p></li>
+<li><p>Caution</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tree_clf</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preproc_pipe</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+<span class="n">tree_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">tree_clf</span><span class="p">[</span><span class="s1">&#39;decisiontreeclassifier&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">feature_importances_</span>
+
+<span class="n">importances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">importances</span><span class="p">,</span> 
+                               <span class="n">index</span><span class="o">=</span><span class="n">df_after_transform</span><span class="p">(</span><span class="n">preproc_pipe</span><span class="p">,</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+<span class="p">)</span>
+<span class="n">importances</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>annual_inc</th>
+      <td>0.390699</td>
+    </tr>
+    <tr>
+      <th>dti</th>
+      <td>0.609301</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Prof. Donald Bowen<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            You're doing well, keep going!
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
