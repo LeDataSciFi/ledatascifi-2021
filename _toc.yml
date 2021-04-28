@@ -166,6 +166,7 @@
         - file: "content/04/02b_regex"
         - file: "content/04/02c_developing a regex"
         - file: "content/04/02d_RegexApplication"
+# now that they can scrape, a new world opens up: https://sec-edgar-downloader.readthedocs.io/en/latest/#quick-start        
 
   - file: "content/05/00_intro"
     title: "Data Science for Finance"    
