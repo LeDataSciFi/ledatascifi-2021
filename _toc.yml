@@ -16,11 +16,18 @@
 #
 # remove most (all) survey links, very little feedback received
 #
+# record all lectures and keep posted all semester, just incentivize live watching directly
+#
+# pre-class 
+#    set up video for anaconda et al 
+#    send some python tutorial 
+#
 # add 5.5: finance applications. 
 # should have pages with "canonical asset pricing", a loan pricing model
 #
 # new data ideas:
 # lending club data?
+# ESG - ???
 # GUSTAFSON ET AL SEA RISE - environmental 
 # night lights/parking lot photos
 # crypto something? robo advising? 
@@ -146,6 +153,8 @@
         - file: "content/03/04e-visualEDA"
         - file: "content/03/04f-betterplots"
 #        - file: "content/03/04g-lyingfigures"
+# Add as note in toc for next years stats pic
+# otis_reid (@Otis Reid) Tweeted: Good article about disbelief being at the root of belief in conspiracy theories from @TimHarford — did not know this bit before! https://t.co/1UlLs43STg https://twitter.com/otis_reid/status/1389707199837097988?s=27
     - file: "content/03/05a-otherskills"
       sections:
         - file: "content/03/05b_merging"
