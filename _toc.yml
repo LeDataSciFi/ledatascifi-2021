@@ -226,7 +226,10 @@
           title: "Many Models" 
 # import smattering? (from below)
 # gradient booksting from L24 2020
-    - file: "content/05/05_thefuture"        
+    - file: "content/05/05_thefuture"              
+      sections:
+        - file: "content/05/05_saving"    
+
 
 
 # #########################################################
