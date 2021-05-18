@@ -16,10 +16,6 @@ The whole class is run off this website and GitHub. GitHub is how we'll submit a
 
 To achieve our objectives, we will have class meetings at the scheduled times via Zoom. Zoom links are posted on the coursesite (for security), and if you need to attend the other one for any reason, please email me. 
 
-```{admonition} By popular demand
-While this class is remote, I will hold 5+ (optional) live get-togethers on campus during the semester. I'm looking forward to these, provided we can do so safely. I'll make announcements in advance.
-```
-
 This course will be, in essence, "pseudo flipped." Meetings will be a mix of lecture, live demo, discussion, pair programming, code races, and tiny student presentations of pre-class problems. I'll tell you more as we move along, but I'm striving to make class sessions productive and interesting throughout. 
 
 In addition, you will have as resources this website, your peers via a github discussion board, the whole of the internet, and, naturally, office hours. **Which is to say: You have my utmost support, and you will succeed if you put in the time!**
@@ -29,16 +25,18 @@ In addition, you will have as resources this website, your peers via a github di
 2. **Invest in yourself: I strongly urge you to buy a second monitor** if you have _any_ space for it.
     - With a second monitor, your productivity in all work and classes will be improved.
     - In our class specifically, you can put zoom on your first screen to see code I'm writing and replicate it on the second screen. 
-    - You can find good new monitors for under \$75 on your go-to delivery service, and for far less if get a used one. 
+    - You can find good new monitors for under \$75 on your go-to delivery service, and for far less if you get a used one. 
     - _Note that everything else in class is **free and open-source**
     that this class does not require you to pay for any materials, software, or subscriptions._
-    - "_**Taking a step back, one of the goals of this course is to make you aware of the incredible array of instruction material that is freely available online.** I also want to encourage you to be entrepreneurial. In that spirit, many of the lectures will follow a tutorial on someone’s blog tutorial, or involve reproducing an existing study with open source tools._" -Grant McDermott
+    - "_**Taking a step back, one of the goals of this course is to make you aware of the incredible array of instruction material that is freely available online.** I also want to encourage you to be entrepreneurial._" -Grant McDermott
 3. Update your Zoom software to the most recent version - we will use the latest features. 
 ```
 
 
 
 #### Policy on recording classes
+
+_Update for next year! For 2021, I did end up recording lectures._
 
 I'm not sure if I will record any sessions, but if I do, they will be available on our coursesite. I do know that even if I do, some sessions (and/or parts of some sessions), will not be recorded or posted for privacy concerns. So don't make assumptions about what will be available! Also, **any recordings I post will be deleted within 2 weeks, so don't fall behind!** 
 
